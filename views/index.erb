@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IdeaBox</title>
+  </head>
+  <body>
+    <h1>IdeaBox</h1>
+    <form action='/' method='POST'>
+      <p>
+        Your Idea:
+      </p>
+      <input type='text' name='idea_title'/><br/>
+      <textarea name='idea_description'></textarea><br/>
+      <input type='submit'/>
+    </form>
+
+    <h3>Existing Idea</h3>
+    <ul>
+      <% ideas.each do |idea| %>
+        <li>
+          <% idea.title %><br>
+          <% idea.description %>
+        </li>
+      <% end %>
+    </ul>
+
+
+  </body>
+</html>
