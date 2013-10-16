@@ -5,26 +5,26 @@ require './lib/idea.rb'
 
 class IdeaTest < Minitest::Test
   def test_basic_idea
-    idea = Idea.new("title" => "dinner",
+    idea = Idea.new("title"       => "dinner",
                     "description" => "chicken BBQ",
-                    "id" => "1")
+                    "id"          => "1")
     assert_equal "dinner", idea.title
     assert_equal "chicken BBQ", idea.description
     assert_equal "1", idea.id
   end
 
   def test_it_has_a_data_hash_with_data_passed_in
-    idea = Idea.new("title" => "dinner",
+    idea = Idea.new("title"       => "dinner",
                     "description" => "chicken BBQ",
-                    "id" => "1")
-    expected = {    "title" => "dinner",
+                    "id"          => "1")
+    expected = {    "title"       => "dinner",
                     "description" => "chicken BBQ",
-                    "votes" => 0 }
+                    "votes"       => 0 }
     assert_equal expected, idea.data_hash
     idea.like!
-    expected2 = {    "title" => "dinner",
+    expected2 = {   "title"       => "dinner",
                     "description" => "chicken BBQ",
-                    "votes" => 1 }
+                    "votes"       => 1 }
     assert_equal expected2, idea.data_hash
   end
 

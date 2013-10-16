@@ -58,6 +58,14 @@ class IdeaStoreTest < Minitest::Test
     assert_equal "Hola!", result.title
   end
 
+  def test_an_idea_like_updates_rank_in_database
+    idea = IdeaStore.find(1)
+    assert_equal 0, idea.rank
+    idea.like!
+    result = IdeaStore.find(1)
+    assert_equal 1, result.rank
+  end
+
   def test_it_leaves_others_unchanged_when_updating_an_idea
     IdeaStore.update(0, "title" => "Hola!")
     result = IdeaStore.find(1)
