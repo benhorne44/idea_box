@@ -1,27 +1,29 @@
-require './lib/idea_store'
+
+
 class Idea
-  attr_reader :title, :description, :id, :rank
+  attr_reader :title, :id, :description, :rank
+  attr_accessor :tags
 
   def initialize(attributes = {})
     @title = attributes["title"]
     @description = attributes["description"]
     @id = attributes["id"]
     @rank = attributes["rank"] || 0
+    @tags = attributes["tags"] || []
   end
 
   def data_hash
     {
-      "title" => title,
+      "title"       => title,
       "description" => description,
-      "rank" => rank
+      "rank"        => rank,
+
+      "tags"        => tags
     }
   end
 
   def like!
     @rank += 1
-    IdeaStore.update(id.to_i, "title" => title,
-                         "description" => description,
-                         "rank" => rank)
   end
 
   def <=>(other)

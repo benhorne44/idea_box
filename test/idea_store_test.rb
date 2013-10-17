@@ -1,16 +1,17 @@
-gem 'minitest'
+require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
-require './lib/idea_store'
-require './lib/idea'
 require 'yaml/store'
+require './lib/idea_box/idea_store'
+require './lib/idea_box/idea'
 
 class IdeaStoreTest < Minitest::Test
 
   def setup
+    IdeaStore.destroy_database_contents
     IdeaStore.database
-    IdeaStore.create("title" => "Hello")
-    IdeaStore.create("title" => "Howdy")
+    IdeaStore.create("title" => "Hello", "description" => "World")
+    IdeaStore.create("title" => "Howdy", "description" => "howdy")
   end
 
   def teardown
@@ -53,17 +54,11 @@ class IdeaStoreTest < Minitest::Test
 
   def test_it_can_update_an_idea
     assert_equal "Hello", IdeaStore.find(0).title
+    assert_equal "World", IdeaStore.find(0).description
     IdeaStore.update(0, "title" => "Hola!")
     result = IdeaStore.find(0)
     assert_equal "Hola!", result.title
-  end
-
-  def test_an_idea_like_updates_rank_in_database
-    idea = IdeaStore.find(1)
-    assert_equal 0, idea.rank
-    idea.like!
-    result = IdeaStore.find(1)
-    assert_equal 1, result.rank
+    assert_equal "World", result.description
   end
 
   def test_it_leaves_others_unchanged_when_updating_an_idea
