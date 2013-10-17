@@ -5,6 +5,18 @@
     <title>IdeaBox</title>
   </head>
   <body>
+    <form action='/' method='POST'>
+      <font size="60"><a href="/" style="text-decoration: none" >IdeaBox  </a></font>
+      <input type='text' name='idea[title]' placeholder="title"/>
+      <input type='text' name='idea[description]' placeholder="description"/>
+      <input type='text' name='idea[tags]' placeholder="tags"/>
+      
+     <input type='submit'/>
+
+   </form>
+   
+
     <%= yield %>
+
   </body>
 </html>

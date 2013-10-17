@@ -1,6 +1,14 @@
 ---
 ideas:
-- title: 'asdf '
-  description: 'asdf '
+- title: new
+  description: idea
+  rank: 1
+  tags: now
+- title: new test
+  description: asoidfj
   rank: 0
-  tags: []
+  tags: tag1
+- title: hey
+  description: you
+  rank: 0
+  tags: guys

@@ -6,7 +6,11 @@ class IdeaStore
   class << self
 
     def database
-      @database ||= YAML::Store.new "db/ideabox"
+      if ENV['RACK_ENV'] == 'test'
+        @database ||= YAML::Store.new "db/test/ideabox"
+      else
+        @database_test ||= YAML::Store.new "db/ideabox"
+      end
     end
 
     def create(attributes)
@@ -17,16 +21,18 @@ class IdeaStore
       end
     end
 
-    def raw_idea
+    def raw_ideas
       database.transaction {|db| db["ideas"] || []}
     end
 
     def all
-      raw_idea.collect {|attributes| Idea.new(attributes)}
+      raw_ideas.each_with_index.collect do |attributes, index|
+        Idea.new(attributes.merge("id" => index))
+      end
     end
 
     def destroy_database_contents
-      database.transaction { |db| db["ideas"] = [] }
+      database.transaction { |db| db["ideas"] = nil}
     end
 
     def delete(position)
@@ -45,6 +51,16 @@ class IdeaStore
       old_idea = find(id)
       new_idea = old_idea.data_hash.merge(new_data)
       database.transaction {database["ideas"][id] = new_idea}
+    end
+
+    def tag_hash
+      all_tags_for_ideas.each_with_object({}) do |tag, hash|
+        hash[tag] = all.select {|idea| idea.data_hash["tags"].include? tag}
+      end
+    end
+
+    def all_tags_for_ideas
+      all.collect {|idea| idea.data_hash["tags"].split(', ')}.flatten.uniq
     end
 
   end

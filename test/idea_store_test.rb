@@ -67,4 +67,32 @@ class IdeaStoreTest < Minitest::Test
     assert_equal "Howdy", result.title
   end
 
+  def test_it_groups_by_tag
+    IdeaStore.create("title" => "Hello",
+                     "description" => "World",
+                     "tags" => "english")
+    IdeaStore.create("title" => "Hola",
+                     "description" => "Mundo",
+                     "tags" => "spanish")
+    IdeaStore.create("title" => "Howdy",
+                     "description" => "Partner",
+                     "tags" => "english")
+    assert_equal 2, IdeaStore.tag_hash["english"].count
+    assert_equal 1, IdeaStore.tag_hash["spanish"].count
+    assert_equal 2, IdeaStore.tag_hash["no tag"].count
+  end
+
+  def test_it_can_recognize_multiple_tags
+    IdeaStore.create("title" => "Hello",
+                     "description" => "World",
+                     "tags" => "english, normal, hello")
+    IdeaStore.create("title" => "Hello",
+                     "description" => "World",
+                     "tags" => "english")
+    assert_equal 1, IdeaStore.tag_hash["normal"].count
+    assert_equal 2, IdeaStore.tag_hash["english"].count
+    assert_equal 1, IdeaStore.tag_hash["hello"].count
+    assert_equal 2, IdeaStore.tag_hash["no tag"].count
+  end
+
 end

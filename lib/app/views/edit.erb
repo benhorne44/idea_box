@@ -1,3 +1,14 @@
-    <h1>IdeaBox</h1>
+<form action='/<%= idea.id %>' method='POST'>
+<p>
+  <h2>Edit your Idea:</h2>
+  <input type='text' name='idea[title]' value="<%= idea.title %>"/><br/>
+    <textarea name='idea[description]'><%= idea.description %></textarea><br/>
+      <% tags = idea.data_hash["tags"] %>
+    <textarea name='idea[tags]'><%= tags unless tags == "no tag" %></textarea><br/>
 
-    <%= erb :form, locals: {idea: idea, id: idea.id} %>
+  <input type='submit'/>
+
+</p>
+  <input type="hidden" name="_method" value="PUT" />
+
+</form>

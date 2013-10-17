@@ -9,13 +9,13 @@ class IdeaBoxApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  configure :development do
-    register Sinatra::Reloader
-  end
+  # configure :development do
+  #   register Sinatra::Reloader
+  # end
 
   get '/' do
     erb :index, :locals => {ideas: IdeaStore.all.sort,
-                            idea: Idea.new }
+                            idea: Idea.new}
   end
 
   post '/' do
@@ -30,7 +30,8 @@ class IdeaBoxApp < Sinatra::Base
 
   get '/:id/edit' do |id|
     idea = IdeaStore.find(id.to_i)
-    erb :edit, :locals => {idea: idea}
+    erb :edit, :locals => {idea: idea,
+                           store: IdeaStore}
   end
 
   put '/:id' do |id|
@@ -38,15 +39,20 @@ class IdeaBoxApp < Sinatra::Base
     redirect '/'
   end
 
-  not_found do
-    erb :error
-  end
-
   post '/:id/like' do |id|
     idea = IdeaStore.find(id.to_i)
     idea.like!
     IdeaStore.update(id.to_i, idea.data_hash)
     redirect '/'
+  end
+
+  not_found do
+    erb :error
+  end
+
+  get '/tags/:tag' do
+    erb :tag_view, :locals => {ideas: IdeaStore,
+                               tag: params[:tag]}
   end
 
 end

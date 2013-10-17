@@ -2,14 +2,14 @@
 
 class Idea
   attr_reader :title, :id, :description, :rank
-  attr_accessor :tags
+  # attr_accessor :tags
 
   def initialize(attributes = {})
-    @title = attributes["title"]
+    @title       = attributes["title"]
     @description = attributes["description"]
-    @id = attributes["id"]
-    @rank = attributes["rank"] || 0
-    @tags = attributes["tags"] || []
+    @id          = attributes["id"]
+    @rank        = attributes["rank"] || 0
+    @tags        = attributes["tags"] || "no tag"
   end
 
   def data_hash
@@ -17,8 +17,7 @@ class Idea
       "title"       => title,
       "description" => description,
       "rank"        => rank,
-
-      "tags"        => tags
+      "tags"        => @tags
     }
   end
 
@@ -29,4 +28,6 @@ class Idea
   def <=>(other)
     other.rank <=> rank
   end
+
+
 end

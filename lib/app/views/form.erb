@@ -1,15 +1,17 @@
-      <form action='/' method='POST'>
-        <p>
-          <% if idea.id %>
-            Edit your Idea:
-          <% else %>
-            Your Idea:
-          <% end %>
-        </p>
-        <% if idea.id %>
-          <input type="hidden" name="_method" value="PUT" />
-        <% end %>
-        <input type='text' name='idea[title]' value="<%= idea.title %>"/><br/>
-        <textarea name='idea[description]'><%= idea.description %></textarea><br/>
-        <input type='submit'/>
-      </form>
+
+<h3>Your Tags:</h3>
+
+<% store.all_tags_for_ideas.each do |tag_value| %>
+  <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
+    <button type="submit"><%= tag_value %></button>
+  </form>
+<% end %>
+
+<form method="get" action="/tags/all">
+  <br>
+  <button type="submit">All Tags</button>
+</form>
+        
+
+
+      

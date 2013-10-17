@@ -1,3 +1,4 @@
+ENV['RACK_ENV'] = 'test'
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -12,7 +13,7 @@ class AppTest < Minitest::Test
   end
 
   def setup
-    IdeaStore.destroy_database_contents
+    # IdeaStore.destroy_database_contents
     IdeaStore.database
     IdeaStore.create("title" => "hello",
                      "description" => "world" )
@@ -72,5 +73,11 @@ class AppTest < Minitest::Test
     assert_equal "hello", idea.title
     assert last_response.redirect?
   end
+
+
+  # def test_it_can_show_all_ideas_grouped_by_tag
+  #   skip
+  #   get '/tags'
+  # end
 
 end

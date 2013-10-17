@@ -14,23 +14,19 @@ class IdeaTest < Minitest::Test
     assert_equal "1", idea.id
   end
 
-  def test_the_like_method_updates_database
-
-  end
-
   def test_it_has_a_data_hash_with_data_passed_in
     idea = Idea.new("title"       => "dinner",
                     "description" => "chicken BBQ" )
     expected = { "title"       => "dinner",
                  "description" => "chicken BBQ",
-                 "rank"       => 0,
-                 "tags"        => [] }
+                 "rank"        => 0,
+                 "tags"        => nil}
     assert_equal expected, idea.data_hash
     idea.like!
     expected = {  "title"       => "dinner",
                   "description" => "chicken BBQ",
                   "rank"        => 1,
-                  "tags"        => []}
+                  "tags"        => nil}
     assert_equal expected, idea.data_hash
   end
 
@@ -59,10 +55,20 @@ class IdeaTest < Minitest::Test
 
   def test_an_idea_has_no_tags_by_default
     idea = Idea.new
-    assert_equal [], idea.tags
+    assert_equal nil, idea.tags
   end
 
   def test_it_can_add_a_tag
-    idea = Idea.new
+    skip
+    idea = Idea.new("tags" => "idea")
+    assert_equal 1, idea.tags
+    assert_equal "idea", idea.tags
+  end
+
+  def test_it_can_edit_a_tag
+    skip
+    idea = Idea.new("tags" => "idea")
+    idea.tags = ["eyedea"]
+    assert_equal "eyedea", idea.tags.first
   end
 end
