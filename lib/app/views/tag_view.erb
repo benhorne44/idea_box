@@ -1,0 +1,27 @@
+        <p>
+          <% if tag == 'all'%>
+            
+            <h1>Your Ideas By Tag:</h1>
+              <% ideas.all_tags_for_ideas.sort.each do |tag| %>
+
+              <h2><a href="/tags/<%= tag %>"><%= tag %></a></h2>
+              
+              <ul>
+                <% ideas.tag_hash[tag].each do |idea| %>
+                <br>
+                
+                <%= erb :idea, locals: {idea: idea}%>
+                <% end %>
+              </ul>
+              <% end %>
+    
+          <% else%>
+            <h1>Your Ideas For <%= tag %>:</h1>
+              <% ideas.tag_hash[tag].each do |idea| %> 
+              <br> 
+              <ul>
+              <%= erb :idea, locals: {idea: idea}%>
+            </ul>
+              <% end %>
+          <% end %>
+        </p>
