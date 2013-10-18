@@ -1,14 +1,8 @@
 ---
 ideas:
-- title: new
-  description: idea
-  rank: 1
-  tags: now
-- title: new test
-  description: asoidfj
+- title: 'asdf '
+  description: 'asdf '
   rank: 0
-  tags: tag1
-- title: hey
-  description: you
-  rank: 0
-  tags: guys
+  tags: asdf a
+  created_at: 2013-10-17 17:47:51.000000000 -06:00
+  updated_at: 2013-10-17 17:54:41.000000000 -06:00

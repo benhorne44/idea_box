@@ -1,3 +1,4 @@
+ENV['RACK_ENV'] = 'test'
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -93,6 +94,13 @@ class IdeaStoreTest < Minitest::Test
     assert_equal 2, IdeaStore.tag_hash["english"].count
     assert_equal 1, IdeaStore.tag_hash["hello"].count
     assert_equal 2, IdeaStore.tag_hash["no tag"].count
+  end
+
+  def test_it_can_recognize_a_created_at_value
+    IdeaStore.create("title" => "Hello",
+                     "description" => "World",
+                     "created_at" => '2013-10-17 16:42:53 -0600')
+
   end
 
 end

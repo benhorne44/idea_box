@@ -1,3 +1,4 @@
+ENV['RACK_ENV'] = 'test'
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -20,13 +21,17 @@ class IdeaTest < Minitest::Test
     expected = { "title"       => "dinner",
                  "description" => "chicken BBQ",
                  "rank"        => 0,
-                 "tags"        => nil}
+                 "tags"        => "no tag",
+                 "created_at"  => nil,
+                 "updated_at"  => nil}
     assert_equal expected, idea.data_hash
     idea.like!
     expected = {  "title"       => "dinner",
                   "description" => "chicken BBQ",
                   "rank"        => 1,
-                  "tags"        => nil}
+                  "tags"        => "no tag",
+                  "created_at"  => nil,
+                  "updated_at"  => nil}
     assert_equal expected, idea.data_hash
   end
 
@@ -53,22 +58,25 @@ class IdeaTest < Minitest::Test
     assert_equal 1, idea.<=>(bad_idea)
   end
 
-  def test_an_idea_has_no_tags_by_default
+  def test_an_idea_has_a_tag_by_default
     idea = Idea.new
-    assert_equal nil, idea.tags
+    assert_equal "no tag", idea.data_hash["tags"]
   end
 
   def test_it_can_add_a_tag
-    skip
     idea = Idea.new("tags" => "idea")
-    assert_equal 1, idea.tags
-    assert_equal "idea", idea.tags
+    assert_equal "idea", idea.data_hash["tags"]
   end
 
-  def test_it_can_edit_a_tag
-    skip
-    idea = Idea.new("tags" => "idea")
-    idea.tags = ["eyedea"]
-    assert_equal "eyedea", idea.tags.first
+  def test_it_can_have_a_created_at_value
+    idea = Idea.new("created_at" => '2013-10-17 16:42:53 -0600')
+
+    assert_equal '2013-10-17 16:42:53 -0600', idea.created_at
+  end
+
+  def test_it_can_have_an_updated_at_value
+    idea = Idea.new("updated_at" => '2013-10-17 16:42:53 -0600')
+
+    assert_equal '2013-10-17 16:42:53 -0600', idea.updated_at
   end
 end

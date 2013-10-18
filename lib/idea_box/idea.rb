@@ -1,13 +1,15 @@
 
 
 class Idea
-  attr_reader :title, :id, :description, :rank
-  # attr_accessor :tags
+  attr_reader :title, :id, :description, :rank, :created_at
+  attr_accessor :updated_at
 
   def initialize(attributes = {})
     @title       = attributes["title"]
     @description = attributes["description"]
     @id          = attributes["id"]
+    @created_at  = attributes["created_at"] ||= Time.now
+    @updated_at  = attributes["updated_at"] = Time.now
     @rank        = attributes["rank"] || 0
     @tags        = attributes["tags"] || "no tag"
   end
@@ -17,7 +19,9 @@ class Idea
       "title"       => title,
       "description" => description,
       "rank"        => rank,
-      "tags"        => @tags
+      "tags"        => @tags,
+      "created_at"  => created_at,
+      "updated_at"  => updated_at
     }
   end
 
