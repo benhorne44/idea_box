@@ -55,4 +55,26 @@ class IdeaBoxApp < Sinatra::Base
                                tag: params[:tag]}
   end
 
+  get '/new_idea' do
+    erb :new_idea, :locals => {idea: Idea.new}
+  end
+
+  get '/search/days/:search_value' do
+    search_value = params[:search_value]
+    ideas = IdeaStore.find_by_day(search_value)
+    erb :ideas_for_days, :locals => {ideas: ideas,
+                                     search: search_value,
+                                     store: IdeaStore}
+  end
+
+  get '/search/times/:search_value' do
+    search_value = params[:search_value]
+    ideas = IdeaStore.find_by_time(params[:search_value])
+    erb :ideas_for_times, :locals => {ideas: ideas, search: search_value, store: IdeaStore}
+  end
+
+  get '/statistics' do
+    erb :statistics, :locals => {store: IdeaStore}
+  end
+
 end

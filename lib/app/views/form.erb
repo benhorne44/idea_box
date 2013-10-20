@@ -7,11 +7,10 @@
   </form>
 <% end %>
 
+<%= erb :search, :locals => {store: IdeaStore} %>
+
 <form method="get" action="/tags/all">
   <br>
   <button type="submit">All Tags</button>
 </form>
-        
 
-
-      

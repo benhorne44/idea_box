@@ -11,8 +11,12 @@ class IdeaStoreTest < Minitest::Test
   def setup
     IdeaStore.destroy_database_contents
     IdeaStore.database
-    IdeaStore.create("title" => "Hello", "description" => "World")
-    IdeaStore.create("title" => "Howdy", "description" => "howdy")
+    IdeaStore.create("title" => "Hello",
+                     "description" => "World",
+                     "created_at" => "2013-10-19 01:12:25 -0600'")
+    IdeaStore.create("title" => "Howdy",
+                     "description" => "Partner",
+                     "created_at" => "2013-10-19 12:04:25 -0600'")
   end
 
   def teardown
@@ -101,6 +105,27 @@ class IdeaStoreTest < Minitest::Test
                      "description" => "World",
                      "created_at" => '2013-10-17 16:42:53 -0600')
 
+  end
+
+  def test_it_can_find_by_day_of_the_week
+
+    IdeaStore.create("title"       => "Thursday Idea",
+                     "description" => "chicken BBQ",
+                     "rank"        => 0,
+                     "tags"        => "no tag",
+                     "created_at"  => '2013-10-17 17:47:51.000000000 -06:00')
+
+    assert_equal 1, IdeaStore.find_by_day('Thu').count
+    assert_equal "Thursday Idea", IdeaStore.find_by_day('Thu').first.title
+    assert_equal 2, IdeaStore.find_by_day('Sat').count
+    assert_equal "Hello", IdeaStore.find_by_day('Sat').first.title
+    assert_equal "Howdy", IdeaStore.find_by_day('Sat').last.title
+  end
+
+  def test_it_can_find_by_time_of_day
+    saturday = IdeaStore.find_by_time('12')
+    assert_equal 1, saturday.count
+    assert_equal "Howdy", saturday.first.title
   end
 
 end

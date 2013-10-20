@@ -1,5 +1,4 @@
-
-
+require 'time'
 class Idea
   attr_reader :title, :id, :description, :rank, :created_at
   attr_accessor :updated_at
@@ -23,6 +22,10 @@ class Idea
       "created_at"  => created_at,
       "updated_at"  => updated_at
     }
+  end
+
+  def time_parse
+    Time.parse(created_at.to_s).rfc2822
   end
 
   def like!

@@ -6,3 +6,15 @@ ideas:
   tags: asdf a
   created_at: 2013-10-17 17:47:51.000000000 -06:00
   updated_at: 2013-10-17 17:54:41.000000000 -06:00
+- title: New Idea
+  description: THINGS
+  rank: 0
+  tags: TAg2
+  created_at: 2013-10-19 11:30:49.000000000 -06:00
+  updated_at: 2013-10-19 11:30:49.000000000 -06:00
+- title: new1
+  description: new1 description
+  rank: 0
+  tags: tag1, tag2, tag3
+  created_at: 2013-10-19 21:15:16.000000000 -06:00
+  updated_at: 2013-10-19 21:15:16.000000000 -06:00

@@ -1,0 +1,26 @@
+  <h1>Your Ideas By Time of Day:</h1>
+  <% if search == 'all' %>
+    <% store.time_values.each do |time| %>
+      <dl>
+      <h2><%= time %></h2>
+
+      <% store.find_by_time(time).each do |idea| %>
+
+        <% if idea.nil? %>
+          <p>There are no ideas for <%= time %></p>
+        <% else %>
+
+        <li><%= erb :idea, locals: {idea: idea}%></li>
+          <br>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <h2><%= search %></h2>
+
+    <% ideas.each do |idea| %>
+      <%= erb :idea, :locals => {idea: idea} %>
+    <% end %>
+  <% end %>
+
+</dl>

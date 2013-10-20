@@ -26,7 +26,7 @@ class IdeaStore
     end
 
     def all
-      raw_ideas.each_with_index.collect do |attributes, index|
+      raw_ideas.collect.with_index do |attributes, index|
         Idea.new(attributes.merge("id" => index))
       end
     end
@@ -61,6 +61,28 @@ class IdeaStore
 
     def all_tags_for_ideas
       all.collect {|idea| idea.data_hash["tags"].split(', ')}.flatten.uniq
+    end
+
+    def find_by_day(day)
+      all.select {|idea| (idea.time_parse =~ /#{day}/)}
+    end
+
+    def day_values
+      ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    end
+
+    def time_values
+      ['00', '01', '02', '03', '04', '05', '06', '07',
+       '08', '09', '10', '11', '12', '13', '14', '15',
+       '16', '17', '18', '19', '20', '21', '22', '23']
+    end
+
+    def find_by_time(time)
+      all.select {|idea| (idea.time_parse =~ / #{time}:/)}
+    end
+
+    def find_by_day_and_time(day='', time='')
+      day = find_by_day(day)
     end
 
   end

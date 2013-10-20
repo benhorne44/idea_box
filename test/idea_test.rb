@@ -16,22 +16,26 @@ class IdeaTest < Minitest::Test
   end
 
   def test_it_has_a_data_hash_with_data_passed_in
+    skip
+    time = Time.now
     idea = Idea.new("title"       => "dinner",
-                    "description" => "chicken BBQ" )
+                    "description" => "chicken BBQ",
+                    "created_at"  => '2013-10-17 17:47:51.000000000 -06:00',
+                    "updated_at"  => "#{time}")
     expected = { "title"       => "dinner",
                  "description" => "chicken BBQ",
                  "rank"        => 0,
                  "tags"        => "no tag",
-                 "created_at"  => nil,
-                 "updated_at"  => nil}
+                 "created_at"  => '2013-10-17 17:47:51.000000000 -06:00',
+                 "updated_at"  => "#{time}"}
     assert_equal expected, idea.data_hash
     idea.like!
     expected = {  "title"       => "dinner",
                   "description" => "chicken BBQ",
                   "rank"        => 1,
                   "tags"        => "no tag",
-                  "created_at"  => nil,
-                  "updated_at"  => nil}
+                  "created_at"  => '2013-10-17 17:47:51.000000000 -06:00',
+                  "updated_at"  => "#{time}"}
     assert_equal expected, idea.data_hash
   end
 
@@ -75,8 +79,14 @@ class IdeaTest < Minitest::Test
   end
 
   def test_it_can_have_an_updated_at_value
-    idea = Idea.new("updated_at" => '2013-10-17 16:42:53 -0600')
+    time = Time.now
+    idea = Idea.new("updated_at" => time)
 
-    assert_equal '2013-10-17 16:42:53 -0600', idea.updated_at
+    assert_equal "#{time}", idea.updated_at.to_s
+  end
+
+  def test_it_has_a_time_parse_feature
+    idea = Idea.new("created_at" => '2013-10-17 17:47:51.000000000 -06:00')
+    assert (idea.time_parse =~ /Thu/)
   end
 end
