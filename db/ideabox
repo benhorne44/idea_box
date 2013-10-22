@@ -2,31 +2,304 @@
 ideas:
 - title: New Idea
   description: THINGS
-  rank: 4
-  tags: TAg2, yeah
+  rank: 7
+  tags: TAg2, ok
   created_at: 2013-10-19 11:30:49.000000000 -06:00
-  updated_at: 2013-10-21 18:19:42.000000000 -06:00
+  updated_at: 2013-10-21 22:21:07.000000000 -06:00
+  revisions: &1
+  - !ruby/object:Idea
+    title: New Idea
+    description: THINGS
+    id: 0
+    created_at: 2013-10-19 11:30:49.000000000 -06:00
+    updated_at: 2013-10-21 18:19:42.000000000 -06:00
+    rank: 4
+    tags: TAg2, yeah
+    revisions: *1
+  - !ruby/object:Idea
+    title: New Idea
+    description: THINGS
+    id: 0
+    created_at: 2013-10-19 11:30:49.000000000 -06:00
+    updated_at: 2013-10-21 20:59:33.000000000 -06:00
+    rank: 4
+    tags: TAg2, yeah, oh
+    revisions: *1
+  - !ruby/object:Idea
+    title: New Idea
+    description: THINGS
+    id: 0
+    created_at: 2013-10-19 11:30:49.000000000 -06:00
+    updated_at: 2013-10-21 20:59:48.000000000 -06:00
+    rank: 4
+    tags: TAg2, yeah, oh, yeah
+    revisions: *1
+  - !ruby/object:Idea
+    title: New Idea
+    description: THINGS
+    id: 0
+    created_at: 2013-10-19 11:30:49.000000000 -06:00
+    updated_at: 2013-10-21 21:05:00.000000000 -06:00
+    rank: 4
+    tags: TAg2, ok
+    revisions: *1
+  - !ruby/object:Idea
+    title: New Idea
+    description: THINGS
+    id: 0
+    created_at: 2013-10-19 11:30:49.000000000 -06:00
+    updated_at: 2013-10-21 22:20:33.000000000 -06:00
+    rank: 5
+    tags: TAg2, ok
+    revisions: *1
+  - !ruby/object:Idea
+    title: New Idea
+    description: THINGS
+    id: 0
+    created_at: 2013-10-19 11:30:49.000000000 -06:00
+    updated_at: 2013-10-21 22:21:04.000000000 -06:00
+    rank: 6
+    tags: TAg2, ok
+    revisions: *1
 - title: fix ideabox
   description: fix bootstrap layout
-  rank: 15
-  tags: bootstrap, layout, booyah
+  rank: 22
+  tags: bootstrap, layout, test
   created_at: 2013-10-21 12:54:17.000000000 -06:00
-  updated_at: 2013-10-21 18:19:07.000000000 -06:00
-- title: drink water
-  description: MORE WATER
-  rank: 1
-  tags: water, drink
+  updated_at: 2013-10-21 23:01:03.000000000 -06:00
+  revisions: &2
+  - !ruby/object:Idea
+    title: fix ideabox
+    description: fix bootstrap layout
+    id: 1
+    created_at: 2013-10-21 12:54:17.000000000 -06:00
+    updated_at: 2013-10-21 22:47:54.000000000 -06:00
+    rank: 19
+    tags: bootstrap, layout
+    revisions: *2
+  - !ruby/object:Idea
+    title: fix ideabox
+    description: fix bootstrap layout
+    id: 1
+    created_at: 2013-10-21 12:54:17.000000000 -06:00
+    updated_at: 2013-10-21 22:49:14.000000000 -06:00
+    rank: 22
+    tags: bootstrap, layout, test
+    revisions: *2
+  - !ruby/object:Idea
+    title: fix ideabox
+    description: fix bootstrap layout
+    id: 1
+    created_at: 2013-10-21 12:54:17.000000000 -06:00
+    updated_at: 2013-10-21 22:50:01.000000000 -06:00
+    rank: 22
+    tags: bootstrap, layout, test, redirect
+    revisions: *2
+  - !ruby/object:Idea
+    title: fix ideabox
+    description: fix bootstrap layout
+    id: 1
+    created_at: 2013-10-21 12:54:17.000000000 -06:00
+    updated_at: 2013-10-21 22:50:38.000000000 -06:00
+    rank: 22
+    tags: bootstrap, layout, test, redirect from edit
+    revisions: *2
+  - !ruby/object:Idea
+    title: fix ideabox
+    description: fix bootstrap layout
+    id: 1
+    created_at: 2013-10-21 12:54:17.000000000 -06:00
+    updated_at: 2013-10-21 22:51:30.000000000 -06:00
+    rank: 22
+    tags: bootstrap, layout, test, redirect from edit
+    revisions: *2
+  - !ruby/object:Idea
+    title: fix ideabox
+    description: fix bootstrap layout
+    id: 1
+    created_at: 2013-10-21 12:54:17.000000000 -06:00
+    updated_at: 2013-10-21 22:51:36.000000000 -06:00
+    rank: 22
+    tags: bootstrap, layout, test, redirect from edit
+    revisions: *2
+- title: gatorade
+  description: drink more water!
+  rank: 9
+  tags: water, gatorade, purple drank
   created_at: 2013-10-21 14:08:30.000000000 -06:00
-  updated_at: 2013-10-21 18:19:01.000000000 -06:00
+  updated_at: 2013-10-21 22:52:01.000000000 -06:00
+  revisions: &3
+  - !ruby/object:Idea
+    title: drink water
+    description: MORE WATER
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 18:19:01.000000000 -06:00
+    rank: 1
+    tags: water, drink
+    revisions: *3
+  - !ruby/object:Idea
+    title: drink water
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 21:14:00.000000000 -06:00
+    rank: 3
+    tags: water, drink, hydration
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 21:15:33.000000000 -06:00
+    rank: 3
+    tags: water, drink, hydration, gatorade is the best
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 21:35:46.000000000 -06:00
+    rank: 3
+    tags: water, drink, hydration, gatorade is the best, bottle
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 21:36:00.000000000 -06:00
+    rank: 3
+    tags: water, drink, hydration, gatorade is the best
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 21:36:40.000000000 -06:00
+    rank: 3
+    tags: water, gas
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 21:36:53.000000000 -06:00
+    rank: 3
+    tags: water, gatorade
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 22:11:56.000000000 -06:00
+    rank: 4
+    tags: water, gatorade
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 22:12:52.000000000 -06:00
+    rank: 5
+    tags: water, gatorade
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 22:27:46.000000000 -06:00
+    rank: 6
+    tags: water, gatorade
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 22:30:53.000000000 -06:00
+    rank: 7
+    tags: water, gatorade
+    revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-21 22:51:49.000000000 -06:00
+    rank: 9
+    tags: water, gatorade
+    revisions: *3
 - title: finish ideabox
   description: get er' done!
-  rank: 1
+  rank: 3
   tags: champion, yeah
   created_at: 2013-10-21 16:23:19.000000000 -06:00
-  updated_at: 2013-10-21 18:19:13.000000000 -06:00
+  updated_at: 2013-10-21 22:28:25.000000000 -06:00
+  revisions: &4
+  - !ruby/object:Idea
+    title: finish ideabox
+    description: get er' done!
+    id: 3
+    created_at: 2013-10-21 16:23:19.000000000 -06:00
+    updated_at: 2013-10-21 18:19:13.000000000 -06:00
+    rank: 1
+    tags: champion, yeah
+    revisions: *4
+  - !ruby/object:Idea
+    title: finish ideabox
+    description: get er' done!
+    id: 3
+    created_at: 2013-10-21 16:23:19.000000000 -06:00
+    updated_at: 2013-10-21 22:20:08.000000000 -06:00
+    rank: 2
+    tags: champion, yeah
+    revisions: *4
 - title: more stickers
   description: get more stickers for the water bottle
-  rank: 1
+  rank: 3
   tags: water, bottle, sticker
   created_at: 2013-10-21 17:36:17.000000000 -06:00
-  updated_at: 2013-10-21 18:19:10.000000000 -06:00
+  updated_at: 2013-10-21 22:42:07.000000000 -06:00
+  revisions: &5
+  - !ruby/object:Idea
+    title: more stickers
+    description: get more stickers for the water bottle
+    id: 4
+    created_at: 2013-10-21 17:36:17.000000000 -06:00
+    updated_at: 2013-10-21 18:19:10.000000000 -06:00
+    rank: 1
+    tags: water, bottle, sticker
+    revisions: *5
+  - !ruby/object:Idea
+    title: more stickers
+    description: get more stickers for the water bottle
+    id: 4
+    created_at: 2013-10-21 17:36:17.000000000 -06:00
+    updated_at: 2013-10-21 22:28:07.000000000 -06:00
+    rank: 2
+    tags: water, bottle, sticker
+    revisions: *5
+- title: to-do list
+  description: Make a to-do list with specifics
+  rank: 1
+  tags: to-do, list, agenda
+  created_at: 2013-10-21 21:52:43.000000000 -06:00
+  updated_at: 2013-10-21 22:27:49.000000000 -06:00
+  revisions: &6
+  - !ruby/object:Idea
+    title: to-do list
+    description: Make a to-do list with specifics
+    id: 5
+    created_at: 2013-10-21 21:52:43.000000000 -06:00
+    updated_at: 2013-10-21 21:52:43.000000000 -06:00
+    rank: 0
+    tags: to-do, list, agenda
+    revisions: *6

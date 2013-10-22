@@ -13,11 +13,18 @@
         <%= erb :idea, locals: {idea: idea}%>
         <% end %>
       <% end %>
-
+  <% elsif ideas.tag_hash[tag].nil? %>
+    <h3>There are no known ideas with the tag '<em><%= tag %></em>'</h3>
+    <dl><h5>Please click <a href='/existing_ideas'>here</a> for all current ideas.</h5></dl>
   <% else%>
-    <h3>Your Ideas For <%= tag %>:</h3>
+    <% if ideas.tag_hash[tag].count == 1 %>
+    <h3>Your Idea For '<em><%= tag %></em>':</h3><br>
+      <%= erb :idea, locals: {idea: ideas.tag_hash[tag].first}%>
+    <% else %>
+    <h3>Your Ideas For '<em><%= tag %></em>':</h3><br>
       <% ideas.tag_hash[tag].each do |idea| %> 
       <%= erb :idea, locals: {idea: idea}%>
+      <% end %>
       <% end %>
   <% end %>
 </p>

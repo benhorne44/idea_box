@@ -46,6 +46,13 @@ class IdeaStore
       idea = Idea.new(raw_idea_for_id(id).merge("id" => id))
     end
 
+    def self.update_like(id, new_data)
+      old_idea = find(id)
+      data_with_time_and_revisions = new_data.merge("updated_at" => Time.now, "revisions" => old_idea.revisions)
+      new_idea = old_idea.data_hash.merge(data_with_time_and_revisions)
+      database.transaction {database["ideas"][id] = new_idea}
+    end
+
     def self.update(id, new_data)
       old_idea = find(id)
       old_idea.revisions << old_idea
@@ -99,12 +106,7 @@ class IdeaStore
     end
 
     def self.sort_by_day
-      array = []
-      day_values.each do |day|
-        idea = find_by_day(day)
-        array << idea
-      end
-      array.flatten
+      day_values.collect {|day| find_by_day(day) }.flatten
     end
 
     def self.sort_by_title
@@ -116,8 +118,7 @@ class IdeaStore
     end
 
     def self.revisions(id)
-      idea = find(id)
-      idea.revisions
+      find(id).revisions
     end
 
 end

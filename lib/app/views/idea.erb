@@ -2,7 +2,11 @@
   <div class="well">
     
     <h2><%= idea.title %>  <span class="badge"><%= idea.rank %></span></h2>
-    <p><a class="btn btn-default btn-xs" href="/<%= idea.id %>/details">View details »</a></p>
+    <p><a class="btn btn-default btn-xs" style="display: inline" href="/<%= idea.id %>/details">View details »</a>
+      <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
+        <input type="submit" class="btn btn-default btn-xs" value='Like'/>
+     
+      </form></p>
     <legend></legend>
     <p>
       <% idea.data_hash["tags"].split(', ').each do |tag_value| %>

@@ -1,17 +1,17 @@
+<% if search_ideas.count == 0 %>
+    <h3>There are no results for your search '<em><%= search %></em>'</h3><br>
+<% elsif search_ideas %>
+  <% if search_ideas.count == 1 %>
 
-<% if search_ideas %>
-<% if search_ideas.count == 1 %>
+  <h3>Result for the search '<em><%= search %></em>':</h3><br>
+    <%= erb :idea, locals: {idea: search_ideas.first} %>
+  <% else %>
+    <h3>Results for the search '<em><%= search %></em>':</h3><br>
+    <% search_ideas.each do |idea| %>
+      <%= erb :idea, locals: {idea: idea} %>
+    <% end %>
+    <% end %>
 
-<h2>Here is your idea for the search '<em><%= search %></em>':</h2>
-  <%= erb :idea, locals: {idea: search_ideas.first} %>
-<% else %>
-  <h2>Here are your ideas for the search '<em><%= search %></em>':</h2>
-  <% search_ideas.each do |idea| %>
-    <%= erb :idea, locals: {idea: idea} %>
-  <% end %>
-  <% end %>
-<% else %>
-  There are no ideas for your search.
 <% end %>
 
 <!-- <fieldset>

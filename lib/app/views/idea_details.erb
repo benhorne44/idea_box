@@ -1,14 +1,29 @@
-<b>Title:</b> <%= idea.title %><br>
-<b>Description:</b> <%= idea.description %><br>
-<b>Tags:</b> <% tags = idea.data_hash["tags"] %>
-<%= tags unless tags == "no tag" %><br>
-<b>Created On:</b> <%= idea.created_at.strftime("%A, %D") %><br>
-<b>Last Updated On:</b> <%= idea.updated_at %>
-  <br>
-
-<form action='/<%= idea.id %>/like' method='POST' style="display: inline">
-  <input type="submit" value="LYKE DAT"/>
-</form>
+  <div class="well">
+    
+    <h1><%= idea.title %></h1>
+    <legend></legend>
+      <h4>Description: <%= idea.description %></h4>
+      <h4>Rank: <span class="badge"><%= idea.rank %></span></h4>
+      <h4>Tags: 
+      <% idea.data_hash["tags"].split(', ').each do |tag_value| %>
+      <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
+        <button class="btn btn-primary btn-xs" value='<%= tag_value %>'><%= tag_value %></button>
+     </form>
+      
+      <% end %>
+      </h4>
+      <h4>Created On: <%= idea.created_at.strftime("%b %e, %Y at %l:%M %p") %></h4>
+      <h4>Last Updated On: <%= idea.updated_at.strftime("%b %e, %Y at %l:%M %p") %></h4>
+      <form action="/<%= idea.id %>" style="display: inline" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" class="btn btn-link" value='delete'>
+      </form>
+  </div>
+    <div class="well">
+      
+      <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
+        <input type="submit" value="LYKE DAT"/>
+      </form>
 
 <a href="/<%= idea.id %>/edit">Edit DAT</a>
 
@@ -17,4 +32,38 @@
   <input type="submit" value="idea no mo'!"/>
 </form>
 
-<br>      
+</div>
+<!-- _______________ -->
+
+
+<br>
+<br>
+<legend></legend>
+<h4>Revision History:</h4>
+<br>
+<% if IdeaStore.find(idea.id.to_i).revisions == [] %>
+  <p><em>There are no revisions for this idea on file.</em></p>
+<% end %>
+<% IdeaStore.find(idea.id.to_i).revisions.sort_by {|i| i.updated_at}.reverse.each do |old_idea| %>
+  
+
+  <div class="col-lg-4">
+  <div class="well">
+    <h49><b><%= old_idea.updated_at.strftime("%b %e, %Y at %l:%M %p") %>  </b><span class="badge"> <%= old_idea.rank %></span></h49>
+    <h5>Title: <em><%= old_idea.title %></em></h5>
+    <h5>Description: <em><%= old_idea.description %></em></h5>
+    <h5>Tags: 
+    <p
+      <% old_idea.data_hash["tags"].split(', ').uniq.each do |tag_value| %>
+      <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
+        <button class="btn btn-primary btn-xs disabled" value='<%= tag_value %>'><font size='2'><%= tag_value %></font></button>
+     </form>
+      
+      <% end %>
+        </h5>
+
+    </p>
+
+  </div>
+</div>
+<% end %>

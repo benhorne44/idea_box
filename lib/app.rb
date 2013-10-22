@@ -21,12 +21,12 @@ class IdeaBoxApp < Sinatra::Base
 
   post '/' do
     IdeaStore.create(params[:idea])
-    redirect '/existing_ideas'
+    redirect back
   end
 
   delete '/:id' do |id|
     IdeaStore.delete(id.to_i)
-    redirect '/existing_ideas'
+    redirect back
   end
 
   get '/:id/edit' do |id|
@@ -48,8 +48,8 @@ class IdeaBoxApp < Sinatra::Base
   post '/:id/like' do |id|
     idea = IdeaStore.find(id.to_i)
     idea.like!
-    IdeaStore.update(id.to_i, idea.data_hash)
-    redirect '/existing_ideas'
+    IdeaStore.update_like(id.to_i, idea.data_hash)
+    redirect back
   end
 
   not_found do
@@ -105,6 +105,10 @@ class IdeaBoxApp < Sinatra::Base
   get '/existing_ideas' do
     erb :existing_ideas, :locals => {ideas: IdeaStore.all.sort}
   end
+
+  # get '/:id/:revision_id' do
+  #   erb :revision_details
+  # end
 
   helpers do
     def new_idea
