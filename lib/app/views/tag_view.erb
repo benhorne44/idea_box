@@ -1,27 +1,24 @@
-        <p>
-          <% if tag == 'all'%>
-            
-            <h1>Your Ideas By Tag:</h1>
-              <% ideas.all_tags_for_ideas.sort.each do |tag| %>
 
-              <h2><a href="/tags/<%= tag %>"><%= tag %></a></h2>
-              
-              <ul>
-                <% ideas.tag_hash[tag].each do |idea| %>
-                <br>
-                
-                <%= erb :idea, locals: {idea: idea}%>
-                <% end %>
-              </ul>
-              <% end %>
+<p>
+  <% if tag == 'all'%>
     
-          <% else%>
-            <h1>Your Ideas For <%= tag %>:</h1>
-              <% ideas.tag_hash[tag].each do |idea| %> 
-              <br> 
-              <ul>
-              <%= erb :idea, locals: {idea: idea}%>
-            </ul>
-              <% end %>
-          <% end %>
-        </p>
+    <h1>Your Ideas By Tag:</h1>
+      <% ideas.all_tags_for_ideas.sort.each do |tag| %>
+
+      <h3><a href="/tags/<%= tag %>"><%= tag %></a></h3>
+      
+        <% ideas.tag_hash[tag].each do |idea| %>
+        <br>
+        
+        <%= erb :idea, locals: {idea: idea}%>
+        <% end %>
+      <% end %>
+
+  <% else%>
+    <h3>Your Ideas For <%= tag %>:</h3>
+      <% ideas.tag_hash[tag].each do |idea| %> 
+      <%= erb :idea, locals: {idea: idea}%>
+      <% end %>
+  <% end %>
+</p>
+

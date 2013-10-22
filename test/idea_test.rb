@@ -62,6 +62,10 @@ class IdeaTest < Minitest::Test
     assert_equal 1, idea.<=>(bad_idea)
   end
 
+  def test_it_can_sort_by_rank
+
+  end
+
   def test_an_idea_has_a_tag_by_default
     idea = Idea.new
     assert_equal "no tag", idea.data_hash["tags"]
@@ -88,5 +92,21 @@ class IdeaTest < Minitest::Test
   def test_it_has_a_time_parse_feature
     idea = Idea.new("created_at" => '2013-10-17 17:47:51.000000000 -06:00')
     assert (idea.time_parse =~ /Thu/)
+  end
+
+  def test_it_has_no_revisions_by_default
+    idea = Idea.new
+    assert_equal [], idea.revisions
+  end
+
+  def test_it_tracks_revisions
+    time = '2013-10-17 16:42:53 -0600'
+    idea = Idea.new("title"       => "dinner",
+                    "description" => "chicken BBQ",
+                    "id"          => "1",
+                    "updated_at"   => time)
+    idea.revisions << idea
+    assert_equal 1, idea.revisions.count
+    assert_equal Idea, idea.revisions.first.class
   end
 end

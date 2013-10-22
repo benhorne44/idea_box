@@ -1,7 +1,23 @@
-<form action='/<%= idea.id %>' method='POST'>
-  <p>Enter Your New Idea:</p>
-  <input type='text' name='idea[title]' placeholder="Title"/><br/>
-  <textarea name='idea[description]' placeholder='Idea Description'></textarea><br/>
-  <textarea name='idea[tags]' placeholder='Idea Tags'></textarea><br/>
-  <input type='submit'/>
+<form action='/<%= idea.id %>' name='sort_by' method='POST' role="form">
+  <div class="form-group">
+    <label for="title_input">Title:</label>
+    <input name='idea[title]' type="title" class="form-control" id="title_input">
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea name='idea[description]' type="description" class="form-control" id="description"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="tags">Tags:</label>
+    <textarea name='idea[tags]' type="tags" class="form-control" id="tags"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="summary">Summary (for the main page):</label>
+    <textarea name='idea[summary]' type="summary" class="form-control" id="summary"></textarea>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Submit Idea</button>
+  </div>
 </form>
+

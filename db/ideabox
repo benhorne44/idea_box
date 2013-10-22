@@ -1,20 +1,32 @@
 ---
 ideas:
-- title: 'asdf '
-  description: 'asdf '
-  rank: 0
-  tags: asdf a
-  created_at: 2013-10-17 17:47:51.000000000 -06:00
-  updated_at: 2013-10-17 17:54:41.000000000 -06:00
 - title: New Idea
   description: THINGS
-  rank: 0
-  tags: TAg2
+  rank: 4
+  tags: TAg2, yeah
   created_at: 2013-10-19 11:30:49.000000000 -06:00
-  updated_at: 2013-10-19 11:30:49.000000000 -06:00
-- title: new1
-  description: new1 description
-  rank: 0
-  tags: tag1, tag2, tag3
-  created_at: 2013-10-19 21:15:16.000000000 -06:00
-  updated_at: 2013-10-19 21:15:16.000000000 -06:00
+  updated_at: 2013-10-21 18:19:42.000000000 -06:00
+- title: fix ideabox
+  description: fix bootstrap layout
+  rank: 15
+  tags: bootstrap, layout, booyah
+  created_at: 2013-10-21 12:54:17.000000000 -06:00
+  updated_at: 2013-10-21 18:19:07.000000000 -06:00
+- title: drink water
+  description: MORE WATER
+  rank: 1
+  tags: water, drink
+  created_at: 2013-10-21 14:08:30.000000000 -06:00
+  updated_at: 2013-10-21 18:19:01.000000000 -06:00
+- title: finish ideabox
+  description: get er' done!
+  rank: 1
+  tags: champion, yeah
+  created_at: 2013-10-21 16:23:19.000000000 -06:00
+  updated_at: 2013-10-21 18:19:13.000000000 -06:00
+- title: more stickers
+  description: get more stickers for the water bottle
+  rank: 1
+  tags: water, bottle, sticker
+  created_at: 2013-10-21 17:36:17.000000000 -06:00
+  updated_at: 2013-10-21 18:19:10.000000000 -06:00

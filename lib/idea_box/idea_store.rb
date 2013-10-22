@@ -3,9 +3,7 @@ require './lib/idea_box/idea'
 
 class IdeaStore
 
-  class << self
-
-    def database
+    def self.database
       if ENV['RACK_ENV'] == 'test'
         @database ||= YAML::Store.new "db/test/ideabox"
       else
@@ -13,78 +11,113 @@ class IdeaStore
       end
     end
 
-    def create(attributes)
+    def self.create(attributes)
       new_idea = Idea.new(attributes)
       database.transaction do |db|
         db["ideas"] ||= []
         db["ideas"].push(new_idea.data_hash)
       end
+      new_idea
     end
 
-    def raw_ideas
+    def self.raw_ideas
       database.transaction {|db| db["ideas"] || []}
     end
 
-    def all
+    def self.all
       raw_ideas.collect.with_index do |attributes, index|
         Idea.new(attributes.merge("id" => index))
       end
     end
 
-    def destroy_database_contents
+    def self.destroy_database_contents
       database.transaction { |db| db["ideas"] = nil}
     end
 
-    def delete(position)
+    def self.delete(position)
       database.transaction {database["ideas"].delete_at(position)}
     end
 
-    def raw_idea_for_id(id)
+    def self.raw_idea_for_id(id)
       database.transaction {database["ideas"].at(id)}
     end
 
-    def find(id)
+    def self.find(id)
       idea = Idea.new(raw_idea_for_id(id).merge("id" => id))
     end
 
-    def update(id, new_data)
+    def self.update(id, new_data)
       old_idea = find(id)
-      new_idea = old_idea.data_hash.merge(new_data)
+      old_idea.revisions << old_idea
+      data_with_time_and_revisions = new_data.merge("updated_at" => Time.now, "revisions" => old_idea.revisions)
+      new_idea = old_idea.data_hash.merge(data_with_time_and_revisions)
       database.transaction {database["ideas"][id] = new_idea}
     end
 
-    def tag_hash
+    def self.tag_hash
       all_tags_for_ideas.each_with_object({}) do |tag, hash|
         hash[tag] = all.select {|idea| idea.data_hash["tags"].include? tag}
       end
     end
 
-    def all_tags_for_ideas
+    def self.all_tags_for_ideas
       all.collect {|idea| idea.data_hash["tags"].split(', ')}.flatten.uniq
     end
 
-    def find_by_day(day)
+    def self.find_by_day(day)
       all.select {|idea| (idea.time_parse =~ /#{day}/)}
     end
 
-    def day_values
+    def self.day_values
       ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     end
 
-    def time_values
+    def self.time_values
       ['00', '01', '02', '03', '04', '05', '06', '07',
        '08', '09', '10', '11', '12', '13', '14', '15',
        '16', '17', '18', '19', '20', '21', '22', '23']
     end
 
-    def find_by_time(time)
+    def self.find_by_time(time)
       all.select {|idea| (idea.time_parse =~ / #{time}:/)}
     end
 
-    def find_by_day_and_time(day='', time='')
+    def self.find_by_day_and_time(day='', time='')
       day = find_by_day(day)
     end
 
-  end
+    def self.search(phrase)
+      all.select do |idea|
+        (idea.title =~ /#{phrase}/i) ||
+        (idea.description =~ /#{phrase}/i) ||
+        (idea.data_hash["tags"] =~ /#{phrase}/i)
+      end
+    end
+
+    def self.sort_by_created_at_date
+      all.sort_by {|idea| idea.created_at}
+    end
+
+    def self.sort_by_day
+      array = []
+      day_values.each do |day|
+        idea = find_by_day(day)
+        array << idea
+      end
+      array.flatten
+    end
+
+    def self.sort_by_title
+      all.sort_by {|idea| idea.title.downcase}
+    end
+
+    def self.sort_by_tag_count
+      all.sort_by {|idea| idea.data_hash["tags"].split(', ').count}.reverse
+    end
+
+    def self.revisions(id)
+      idea = find(id)
+      idea.revisions
+    end
 
 end

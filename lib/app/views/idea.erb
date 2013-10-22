@@ -1,20 +1,25 @@
-      <b>Title:</b> <%= idea.title %><br>
-      <b>Description:</b> <%= idea.description %><br>
-      <b>Tags:</b> <% tags = idea.data_hash["tags"] %>
-      <%= tags unless tags == "no tag" %><br>
-      <b>Created On:</b> <%= idea.created_at.strftime("%A, %D") %><br>
-      <b>Last Updated On:</b> <%= idea.updated_at.strftime("%A, %D") %>
-        <br>
-      <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
-        <input type="submit" value="LYKE DAT"/>
-      </form>
-
-      <a href="/<%= idea.id %>/edit">Edit DAT</a>
-
+<div class="col-lg-4">
+  <div class="well">
+    
+    <h2><%= idea.title %>  <span class="badge"><%= idea.rank %></span></h2>
+    <p><a class="btn btn-default btn-xs" href="/<%= idea.id %>/details">View details »</a></p>
+    <legend></legend>
+    <p>
+      <% idea.data_hash["tags"].split(', ').each do |tag_value| %>
+      <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
+        <button class="btn btn-primary btn-xs" value='<%= tag_value %>'><%= tag_value %></button>
+     </form>
+      
+      <% end %>
+    </p>
       <form action="/<%= idea.id %>" style="display: inline" method="POST">
         <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="idea no mo'!"/>
+        <input type="submit" class="btn btn-link" value='delete'>
       </form>
-      
-      <br>      
+
+  </div>
+</div>
+
+
+
 

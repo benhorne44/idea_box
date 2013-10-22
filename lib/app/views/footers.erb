@@ -1,0 +1,12 @@
+<a class="divider"></a>
+<div id="wrap">
+  <div id="main" class="container clear-top">
+        <p class="pull-right"><a href="#top">Back to top</a></p>
+        <p>
+          <% store.all_tags_for_ideas.each do |tag| %>
+          <a href="/tags/<%= tag %>"><%= tag %></a>
+          <% end %>
+        </p>
+  </div>
+</div>
+<footer class="footer"></footer>

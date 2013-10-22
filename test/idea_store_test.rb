@@ -128,4 +128,101 @@ class IdeaStoreTest < Minitest::Test
     assert_equal "Howdy", saturday.first.title
   end
 
+  def test_it_can_search_for_a_word_in_an_idea
+    IdeaStore.create("title"       => "Heyo Partner",
+                     "description" => "good day sir",
+                     "rank"        => 0,
+                     "tags"        => "no tag",
+                     "created_at"  => '2013-10-17 17:47:51.000000000 -06:00')
+    assert_equal "Heyo Partner", IdeaStore.search('good').first.title
+    assert_equal "good day sir", IdeaStore.search('Heyo').first.description
+  end
+
+  def test_search_is_not_case_sensitive
+    IdeaStore.create("title"       => "Heyo Partner",
+                     "description" => "good day sir",
+                     "rank"        => 0,
+                     "tags"        => "no tag",
+                     "created_at"  => '2013-10-17 17:47:51.000000000 -06:00')
+    assert_equal "Heyo Partner", IdeaStore.search('GoOD').first.title
+  end
+
+  def test_it_can_search_for_a_phrase
+    IdeaStore.create("title"       => "Heyo Partner",
+                     "description" => "Only two things are infinite,
+                                       the universe and human stupidity,
+                                       and I'm not sure about the former.",
+                     "rank"        => 0,
+                     "tags"        => "no tag",
+                     "created_at"  => '2013-10-17 17:47:51.000000000 -06:00')
+    assert_equal "Heyo Partner", IdeaStore.search("i'm Not SuRe").first.title
+  end
+
+  def test_it_can_sort_by_date_created
+    IdeaStore.create("title"       => "Heyo Partner",
+                     "description" => "Only two things are infinite,
+                                       the universe and human stupidity,
+                                       and I'm not sure about the former.",
+                     "rank"        => 0,
+                     "tags"        => "no tag",
+                     "created_at"  => '2013-10-17 17:47:51.000000000 -06:00')
+    results = IdeaStore.sort_by_created_at_date
+    assert_equal "Heyo Partner", results.first.title
+    assert_equal "Howdy", results.last.title
+  end
+
+  def test_it_can_sort_by_day_of_the_week
+    IdeaStore.create("title"       => "Heyo Partner",
+                     "description" => "Only two things are infinite,
+                                       the universe and human stupidity,
+                                       and I'm not sure about the former.",
+                     "rank"        => 0,
+                     "tags"        => "no tag",
+                     "created_at"  => '2013-10-17 17:47:51.000000000 -06:00')
+    results = IdeaStore.sort_by_day.map {|idea| idea.title}
+    assert_equal ["Heyo Partner", "Hello", "Howdy"], results
+  end
+
+  def test_it_can_sort_by_title
+    IdeaStore.create("title"       => "Heyo Partner",
+                     "description" => "Only two things are infinite,
+                                       the universe and human stupidity,
+                                       and I'm not sure about the former.",
+                     "rank"        => 0,
+                     "tags"        => "no tag",
+                     "created_at"  => '2013-10-17 17:47:51.000000000 -06:00')
+    results = IdeaStore.sort_by_title.map {|idea| idea.title }
+    assert_equal ["Hello", "Heyo Partner", "Howdy"], results
+  end
+
+  def test_it_can_sort_by_tag_count
+    idea1 = IdeaStore.create("title" => "A",
+                             "tags" => "green, blue, yellow")
+    idea2 = IdeaStore.create("title" => "B",
+                             "tags" => "green, blue")
+    idea3 = IdeaStore.create("title" => "C",
+                             "tags" => "green")
+    results = IdeaStore.sort_by_tag_count.map {|idea| idea.title}
+    assert_equal ["A", "B", "C", "Howdy", "Hello"], results
+  end
+
+  def test_it_tracks_revisions_for_an_idea
+    idea = IdeaStore.create("title" => "Hello",
+                     "description" => "World",
+                     "tags" => "english, normal, hello")
+    assert_equal 0, idea.revisions.count
+    IdeaStore.update(idea.id.to_i, {"title" => "Heyo", "description" => "wookie"})
+    assert_equal "Heyo", IdeaStore.find(idea.id.to_i).title
+    assert_equal "Hello", IdeaStore.revisions(idea.id.to_i).first.title
+    assert_equal 1, IdeaStore.revisions(idea.id.to_i).count
+    IdeaStore.update(idea.id.to_i, {"title" => "Howdy", "description" => "jawa"})
+    assert_equal 2, IdeaStore.revisions(idea.id.to_i).count
+    assert_equal "Howdy", IdeaStore.find(idea.id.to_i).title
+    assert_equal "jawa", IdeaStore.find(idea.id.to_i).description
+    assert_equal "Hello", IdeaStore.revisions(idea.id.to_i).first.title
+    assert_equal "World", IdeaStore.revisions(idea.id.to_i).first.description
+    assert_equal "Heyo", IdeaStore.revisions(idea.id.to_i).last.title
+    assert_equal "wookie", IdeaStore.revisions(idea.id.to_i).last.description
+  end
+
 end

@@ -1,0 +1,11 @@
+
+<% if param == 'default' %>
+  <%= erb :existing_ideas, locals: {ideas: IdeaStore.all} %>
+<% end %>
+
+<h3>Your Ideas Sorted by '<em><%= param%></em>':</h3><br>
+
+  <% ideas.each do |idea| %>
+    <%= erb :idea, locals: {idea: idea} %>
+  <% end %>
+ 
