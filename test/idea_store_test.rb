@@ -19,9 +19,9 @@ class IdeaStoreTest < Minitest::Test
                      "created_at" => "2013-10-19 12:04:25 -0600'")
   end
 
-  def teardown
-    IdeaStore.destroy_database_contents
-  end
+  # def teardown
+  #   IdeaStore.destroy_database_contents
+  # end
 
   def test_the_database_exists
     assert_kind_of Psych::Store, IdeaStore.database
@@ -29,7 +29,7 @@ class IdeaStoreTest < Minitest::Test
 
   def test_it_creates_a_new_idea_and_stores_in_database
     result = IdeaStore.database.transaction {|db| db["ideas"].first}
-    assert_equal "Hello", result["title"]
+    assert_equal "Hello", Idea.new(result).title
   end
 
   def test_all_gives_all_ideas_as_idea_objects
@@ -100,15 +100,7 @@ class IdeaStoreTest < Minitest::Test
     assert_equal 2, IdeaStore.tag_hash["no tag"].count
   end
 
-  def test_it_can_recognize_a_created_at_value
-    IdeaStore.create("title" => "Hello",
-                     "description" => "World",
-                     "created_at" => '2013-10-17 16:42:53 -0600')
-
-  end
-
   def test_it_can_find_by_day_of_the_week
-
     IdeaStore.create("title"       => "Thursday Idea",
                      "description" => "chicken BBQ",
                      "rank"        => 0,
@@ -224,5 +216,10 @@ class IdeaStoreTest < Minitest::Test
     assert_equal "Heyo", IdeaStore.revisions(idea.id.to_i).last.title
     assert_equal "wookie", IdeaStore.revisions(idea.id.to_i).last.description
   end
+
+  # def test_all_produces_an_array_of_ideas
+  #   assert_equal Array, IdeaStore.all.class
+  #   assert_equal Array, IdeaStore.all.first.class
+  # end
 
 end

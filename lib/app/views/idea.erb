@@ -9,7 +9,7 @@
       </form></p>
     <legend></legend>
     <p>
-      <% idea.data_hash["tags"].split(', ').each do |tag_value| %>
+      <% idea.tags.split(', ').each do |tag_value| %>
       <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
         <button class="btn btn-primary btn-xs" value='<%= tag_value %>'><%= tag_value %></button>
      </form>

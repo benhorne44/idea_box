@@ -1,7 +1,7 @@
 require 'time'
 class Idea
   attr_reader :title, :id, :description, :rank, :created_at
-  attr_accessor :updated_at, :revisions
+  attr_accessor :updated_at, :revisions, :tags
 
   def initialize(attributes = {})
     @title       = attributes["title"]
@@ -17,11 +17,13 @@ class Idea
   def data_hash
     {
       "title"       => title,
+      "id"          => id,
       "description" => description,
       "rank"        => rank,
-      "tags"        => @tags,
+      "tags"        => tags,
       "created_at"  => created_at,
       "updated_at"  => updated_at,
+      "revisions"   => @revisions
     }
   end
 
@@ -37,5 +39,10 @@ class Idea
     other.rank <=> rank
   end
 
+  def merge(new_data)
+    revisions << self
+    data = new_data.merge("updated_at" => Time.now)
+    Idea.new(data_hash.merge(data))
+  end
 
 end

@@ -1,11 +1,12 @@
 ---
 ideas:
 - title: New Idea
+  id: 0
   description: THINGS
-  rank: 7
+  rank: 8
   tags: TAg2, ok
   created_at: 2013-10-19 11:30:49.000000000 -06:00
-  updated_at: 2013-10-21 22:21:07.000000000 -06:00
+  updated_at: '2013-10-21 22:21:07 -0600'
   revisions: &1
   - !ruby/object:Idea
     title: New Idea
@@ -62,11 +63,12 @@ ideas:
     tags: TAg2, ok
     revisions: *1
 - title: fix ideabox
+  id: 1
   description: fix bootstrap layout
-  rank: 22
+  rank: 23
   tags: bootstrap, layout, test
   created_at: 2013-10-21 12:54:17.000000000 -06:00
-  updated_at: 2013-10-21 23:01:03.000000000 -06:00
+  updated_at: '2013-10-21 23:01:03 -0600'
   revisions: &2
   - !ruby/object:Idea
     title: fix ideabox
@@ -123,11 +125,12 @@ ideas:
     tags: bootstrap, layout, test, redirect from edit
     revisions: *2
 - title: gatorade
+  id: 2
   description: drink more water!
-  rank: 9
-  tags: water, gatorade, purple drank
+  rank: 11
+  tags: water, gatorade, purple drank, updated
   created_at: 2013-10-21 14:08:30.000000000 -06:00
-  updated_at: 2013-10-21 22:52:01.000000000 -06:00
+  updated_at: 2013-10-22 15:29:17.000000000 -06:00
   revisions: &3
   - !ruby/object:Idea
     title: drink water
@@ -237,6 +240,15 @@ ideas:
     rank: 9
     tags: water, gatorade
     revisions: *3
+  - !ruby/object:Idea
+    title: gatorade
+    description: drink more water!
+    id: 2
+    created_at: 2013-10-21 14:08:30.000000000 -06:00
+    updated_at: 2013-10-22 08:15:21.000000000 -06:00
+    rank: 10
+    tags: water, gatorade, purple drank
+    revisions: *3
 - title: finish ideabox
   description: get er' done!
   rank: 3
@@ -264,10 +276,10 @@ ideas:
     revisions: *4
 - title: more stickers
   description: get more stickers for the water bottle
-  rank: 3
+  rank: 4
   tags: water, bottle, sticker
   created_at: 2013-10-21 17:36:17.000000000 -06:00
-  updated_at: 2013-10-21 22:42:07.000000000 -06:00
+  updated_at: 2013-10-22 08:30:11.000000000 -06:00
   revisions: &5
   - !ruby/object:Idea
     title: more stickers
@@ -303,3 +315,11 @@ ideas:
     rank: 0
     tags: to-do, list, agenda
     revisions: *6
+- title: music
+  id: 6
+  description: music
+  rank: 0
+  tags: yeah
+  created_at: 2013-10-22 15:02:44.000000000 -06:00
+  updated_at: '2013-10-22 15:02:44 -0600'
+  revisions: []

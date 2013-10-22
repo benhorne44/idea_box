@@ -1,18 +1,22 @@
-<% if search_ideas.count == 0 %>
-    <h3>There are no results for your search '<em><%= search %></em>'</h3><br>
-<% elsif search_ideas %>
-  <% if search_ideas.count == 1 %>
+<% if search.length == 0 %>
+  <h3>Please enter a keyword or phrase for your search.</h3>
+<% else %>
+  <% if search_ideas.count == 0 %>
+      <h3>There are no results for your search '<em><%= search %></em>'</h3><br>
+  <% elsif search_ideas %>
+    <% if search_ideas.count == 1 %>
 
-  <h3>Result for the search '<em><%= search %></em>':</h3><br>
-    <%= erb :idea, locals: {idea: search_ideas.first} %>
-  <% else %>
-    <h3>Results for the search '<em><%= search %></em>':</h3><br>
-    <% search_ideas.each do |idea| %>
-      <%= erb :idea, locals: {idea: idea} %>
-    <% end %>
-    <% end %>
+    <h3>Result for the search '<em><%= search %></em>':</h3><br>
+      <%= erb :idea, locals: {idea: search_ideas.first} %>
+    <% else %>
+      <h3>Results for the search '<em><%= search %></em>':</h3><br>
+      <% search_ideas.each do |idea| %>
+        <%= erb :idea, locals: {idea: idea} %>
+      <% end %>
+      <% end %>
 
-<% end %>
+  <% end %>
+<% end %>   
 
 <!-- <fieldset>
   <legend><b>Search Your Ideas:</b></legend>

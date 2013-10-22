@@ -1,2 +1,18 @@
 ---
-ideas: 
+ideas:
+- title: Hello
+  id: 0
+  description: World
+  rank: 0
+  tags: no tag
+  created_at: '2013-10-19 01:12:25 -0600'''
+  updated_at: '2013-10-22 15:10:39 -0600'
+  revisions: []
+- title: Howdy
+  id: 1
+  description: Partner
+  rank: 0
+  tags: no tag
+  created_at: '2013-10-19 12:04:25 -0600'''
+  updated_at: '2013-10-22 15:10:39 -0600'
+  revisions: []

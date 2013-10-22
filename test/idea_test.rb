@@ -15,30 +15,6 @@ class IdeaTest < Minitest::Test
     assert_equal "1", idea.id
   end
 
-  def test_it_has_a_data_hash_with_data_passed_in
-    skip
-    time = Time.now
-    idea = Idea.new("title"       => "dinner",
-                    "description" => "chicken BBQ",
-                    "created_at"  => '2013-10-17 17:47:51.000000000 -06:00',
-                    "updated_at"  => "#{time}")
-    expected = { "title"       => "dinner",
-                 "description" => "chicken BBQ",
-                 "rank"        => 0,
-                 "tags"        => "no tag",
-                 "created_at"  => '2013-10-17 17:47:51.000000000 -06:00',
-                 "updated_at"  => "#{time}"}
-    assert_equal expected, idea.data_hash
-    idea.like!
-    expected = {  "title"       => "dinner",
-                  "description" => "chicken BBQ",
-                  "rank"        => 1,
-                  "tags"        => "no tag",
-                  "created_at"  => '2013-10-17 17:47:51.000000000 -06:00',
-                  "updated_at"  => "#{time}"}
-    assert_equal expected, idea.data_hash
-  end
-
   def test_it_gets_a_rank_of_0_initially
     idea = Idea.new
     assert_equal 0, idea.rank
@@ -68,12 +44,12 @@ class IdeaTest < Minitest::Test
 
   def test_an_idea_has_a_tag_by_default
     idea = Idea.new
-    assert_equal "no tag", idea.data_hash["tags"]
+    assert_equal "no tag", idea.tags
   end
 
   def test_it_can_add_a_tag
     idea = Idea.new("tags" => "idea")
-    assert_equal "idea", idea.data_hash["tags"]
+    assert_equal "idea", idea.tags
   end
 
   def test_it_can_have_a_created_at_value
@@ -108,5 +84,19 @@ class IdeaTest < Minitest::Test
     idea.revisions << idea
     assert_equal 1, idea.revisions.count
     assert_equal Idea, idea.revisions.first.class
+  end
+
+  def test_it_can_merge_ideas
+    idea1 = Idea.new("title"       => "dinner",
+                    "description" => "chicken BBQ",
+                    "id"          => '0',
+                    "updated_at"   => '2013-10-17 16:42:53 -0600')
+    new_data = {"title"       => "lunch",
+                    "description" => "beef BBQ",
+                    "id"          => "1"}
+    result = idea1.merge(new_data)
+    assert_equal "lunch", result.title
+    assert_equal "beef BBQ", result.description
+    refute_equal '2013-10-17 16:42:53 -0600', result.updated_at
   end
 end

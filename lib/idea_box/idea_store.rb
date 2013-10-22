@@ -12,22 +12,22 @@ class IdeaStore
     end
 
     def self.create(attributes)
-      new_idea = Idea.new(attributes)
+      new_idea = Idea.new(attributes.merge("id" => all.count))
       database.transaction do |db|
         db["ideas"] ||= []
-        db["ideas"].push(new_idea.data_hash)
+        db["ideas"] << new_idea.data_hash
       end
       new_idea
     end
 
-    def self.raw_ideas
-      database.transaction {|db| db["ideas"] || []}
-    end
-
-    def self.all
+     def self.all
       raw_ideas.collect.with_index do |attributes, index|
         Idea.new(attributes.merge("id" => index))
       end
+    end
+
+    def self.raw_ideas
+      database.transaction {|db| db["ideas"] || []}
     end
 
     def self.destroy_database_contents
@@ -43,32 +43,28 @@ class IdeaStore
     end
 
     def self.find(id)
-      idea = Idea.new(raw_idea_for_id(id).merge("id" => id))
+      Idea.new(raw_idea_for_id(id).merge("id" => id))
     end
 
     def self.update_like(id, new_data)
       old_idea = find(id)
-      data_with_time_and_revisions = new_data.merge("updated_at" => Time.now, "revisions" => old_idea.revisions)
-      new_idea = old_idea.data_hash.merge(data_with_time_and_revisions)
-      database.transaction {database["ideas"][id] = new_idea}
+      old_idea.like!
+      database.transaction {database["ideas"][id] = old_idea.data_hash}
     end
 
     def self.update(id, new_data)
-      old_idea = find(id)
-      old_idea.revisions << old_idea
-      data_with_time_and_revisions = new_data.merge("updated_at" => Time.now, "revisions" => old_idea.revisions)
-      new_idea = old_idea.data_hash.merge(data_with_time_and_revisions)
-      database.transaction {database["ideas"][id] = new_idea}
+      new_idea = find(id).merge(new_data)
+      database.transaction {database["ideas"][id] = new_idea.data_hash}
     end
 
     def self.tag_hash
       all_tags_for_ideas.each_with_object({}) do |tag, hash|
-        hash[tag] = all.select {|idea| idea.data_hash["tags"].include? tag}
+        hash[tag] = all.select {|idea| idea.tags.include? tag}
       end
     end
 
     def self.all_tags_for_ideas
-      all.collect {|idea| idea.data_hash["tags"].split(', ')}.flatten.uniq
+      all.collect {|idea| idea.tags.split(', ')}.flatten.uniq
     end
 
     def self.find_by_day(day)
@@ -87,10 +83,6 @@ class IdeaStore
 
     def self.find_by_time(time)
       all.select {|idea| (idea.time_parse =~ / #{time}:/)}
-    end
-
-    def self.find_by_day_and_time(day='', time='')
-      day = find_by_day(day)
     end
 
     def self.search(phrase)
@@ -114,7 +106,7 @@ class IdeaStore
     end
 
     def self.sort_by_tag_count
-      all.sort_by {|idea| idea.data_hash["tags"].split(', ').count}.reverse
+      all.sort_by {|idea| idea.tags.split(', ').count}.reverse
     end
 
     def self.revisions(id)

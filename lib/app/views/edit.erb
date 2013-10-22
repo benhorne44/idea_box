@@ -3,7 +3,7 @@
   <h2>Edit your Idea:</h2>
   <input type='text' name='idea[title]' value="<%= idea.title %>"/><br/>
     <textarea name='idea[description]'><%= idea.description %></textarea><br/>
-      <% tags = idea.data_hash["tags"] %>
+      <% tags = idea.tags %>
     <textarea name='idea[tags]'><%= tags unless tags == "no tag" %></textarea><br/>
 
   <input type='submit'/>

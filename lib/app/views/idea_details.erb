@@ -1,11 +1,12 @@
   <div class="well">
     
     <h1><%= idea.title %></h1>
+
     <legend></legend>
       <h4>Description: <%= idea.description %></h4>
-      <h4>Rank: <span class="badge"><%= idea.rank %></span></h4>
+      <h4>Score: <span class="badge"><%= idea.rank %></span></h4>
       <h4>Tags: 
-      <% idea.data_hash["tags"].split(', ').each do |tag_value| %>
+      <% idea.tags.split(', ').each do |tag_value| %>
       <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
         <button class="btn btn-primary btn-xs" value='<%= tag_value %>'><%= tag_value %></button>
      </form>
@@ -14,23 +15,20 @@
       </h4>
       <h4>Created On: <%= idea.created_at.strftime("%b %e, %Y at %l:%M %p") %></h4>
       <h4>Last Updated On: <%= idea.updated_at.strftime("%b %e, %Y at %l:%M %p") %></h4>
-      <form action="/<%= idea.id %>" style="display: inline" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="btn btn-link" value='delete'>
-      </form>
+      
   </div>
     <div class="well">
       
-      <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
-        <input type="submit" value="LYKE DAT"/>
+      <form action="/<%= idea.id %>/like" style="display: inline" method="POST">
+        <input type="submit" class="btn btn-link" value='Like'>
       </form>
 
-<a href="/<%= idea.id %>/edit">Edit DAT</a>
+<a href="/<%= idea.id %>/edit">Edit</a>
 
-<form action="/<%= idea.id %>" style="display: inline" method="POST">
-  <input type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="idea no mo'!"/>
-</form>
+  <form action="/<%= idea.id %>" style="display: inline" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" class="btn btn-link" value='Delete'>
+  </form>
 
 </div>
 <!-- _______________ -->
@@ -54,7 +52,7 @@
     <h5>Description: <em><%= old_idea.description %></em></h5>
     <h5>Tags: 
     <p
-      <% old_idea.data_hash["tags"].split(', ').uniq.each do |tag_value| %>
+      <% old_idea.tags.split(', ').uniq.each do |tag_value| %>
       <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
         <button class="btn btn-primary btn-xs disabled" value='<%= tag_value %>'><font size='2'><%= tag_value %></font></button>
      </form>

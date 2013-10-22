@@ -14,9 +14,10 @@ class IdeaBoxApp < Sinatra::Base
   # end
 
   get '/' do
-    erb :index, :locals => {ideas: IdeaStore.all.sort,
-                            idea: Idea.new,
-                            store: IdeaStore}
+    erb :index
+    # erb :index, :locals => {ideas: IdeaStore.all.sort,
+    #                         idea: Idea.new,
+    #                         store: IdeaStore}
   end
 
   post '/' do
@@ -105,10 +106,6 @@ class IdeaBoxApp < Sinatra::Base
   get '/existing_ideas' do
     erb :existing_ideas, :locals => {ideas: IdeaStore.all.sort}
   end
-
-  # get '/:id/:revision_id' do
-  #   erb :revision_details
-  # end
 
   helpers do
     def new_idea
