@@ -1,13 +1,48 @@
+<h3>Idea Count by Day:</h3>
+<div class='well'>
+<% store.day_names.each do |day| %>
+<ul class="nav nav-pills">
+  <li class="active" style='margin-left: 10px;display: inline'>
+  <a href="/statistics/days/<%= day[0...3] %>"><%= day %> <span class="badge"><%= store.find_by_day(day[0...3]).count %> </span></a></li>
+<% end %>
+</ul>
+</div>
 
-<script src="/Chart.js/Chart.js"></script>
-<script src="/js/charts.js"></script>
-<canvas id="myChart" width="400" height="400"></canvas>
-<style>
-  .hidden {
-    display: none;
-  }
-</style>
+<br>
+<legend></legend>
 
-<span class="day hidden">
-  20
-</span>
+<h3>Idea Count by Time of Day:</h3>
+<div class='well'>
+  <ul class="nav nav-pills">
+        <li class="active" style='margin-right: 20px; margin-left: 10px; display: inline'>
+      <a>AM</a></li>
+<% store.time_values[0...12].each do |time_value| %> 
+    <% count = store.find_by_time(time_value).count %>
+
+  <!-- AM -->
+
+  <ul class="nav nav-pills">
+    <li class="active" style='margin-left: 10px; display: inline'>
+
+    <a href="/statistics/days/all"><%= time_value %>:00<span class="badge"></span></a></li>
+    <% end %>
+  </ul>
+</div>
+  <!-- PM -->
+
+
+<div class='well'>
+    <ul class="nav nav-pills">
+      <li class="active" style='margin-right: 20px; margin-left: 10px; display: inline'>
+  <a>PM</a></li>
+  <% store.time_values[12..-1].each do |time_value| %>
+ 
+   <ul class="nav nav-pills">
+    <li class="active" style='margin-left: 10px; display: inline'>
+
+    <a href="/statistics/days/all"><%= time_value %>:00<span class="badge"></span></a></li>
+  <% end %>
+
+  </ul>
+    </div>
+

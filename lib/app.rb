@@ -62,11 +62,10 @@ class IdeaBoxApp < Sinatra::Base
                                tag: params[:tag]}
   end
 
-  get '/search/days/:search_value' do
-    search_value = params[:search_value]
-    ideas = IdeaStore.find_by_day(search_value)
+  get '/statistics/days/:day' do
+    ideas = IdeaStore.find_by_day(params[:day])
     erb :ideas_for_days, :locals => {ideas: ideas,
-                                     search: search_value,
+                                     day_name: params[:day],
                                      store: IdeaStore}
   end
 
@@ -82,7 +81,8 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/statistics' do
-    erb :statistics, :locals => {store: IdeaStore}
+    sorted_ideas = IdeaStore.all.sort_by {|idea| idea.created_at}
+    erb :statistics, :locals => {store: IdeaStore, sorted_ideas: sorted_ideas}
   end
 
   get '/sort/:sort_by' do

@@ -1,25 +1,15 @@
 <div class="col-lg-4">
   <div class="well">
-    
-    <h2><%= idea.title %>  <span class="badge"><%= idea.rank %></span></h2>
-    <p><a class="btn btn-default btn-xs" style="display: inline" href="/<%= idea.id %>/details">View details »</a>
-      <form action='/<%= idea.id %>/like' method='POST' style="display: inline">
-        <input type="submit" class="btn btn-default btn-xs" value='Like'/>
-     
-      </form></p>
-    <legend></legend>
-    <p>
-      <% idea.tags.split(', ').each do |tag_value| %>
-      <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
-        <button class="btn btn-primary btn-xs" value='<%= tag_value %>'><%= tag_value %></button>
-     </form>
+    <!-- LIKE -->
+    <form action='/<%= idea.id %>/like' method='POST' style="float: right;">
+      <input type="submit" class="btn btn-success btn-xs" value='Like'/>
+   
+    </form>
+      <!-- _____ -->
       
-      <% end %>
-    </p>
-      <form action="/<%= idea.id %>" style="display: inline" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" class="btn btn-link" value='delete'>
-      </form>
+    <h2><em><%= idea.title %>  </em></h2>
+    <p><a class="btn btn-primary btn-xs" style="display: inline" href="/<%= idea.id %>/details">View details »</a>
+      </p>
 
   </div>
 </div>

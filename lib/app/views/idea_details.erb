@@ -1,6 +1,7 @@
   <div class="well">
     
-    <h1><%= idea.title %></h1>
+    <h1><%= idea.title %> </h1>
+    <a href="/<%= idea.id %>/edit">Edit</a>
 
     <legend></legend>
       <h4>Description: <%= idea.description %></h4>
@@ -23,7 +24,7 @@
         <input type="submit" class="btn btn-link" value='Like'>
       </form>
 
-<a href="/<%= idea.id %>/edit">Edit</a>
+
 
   <form action="/<%= idea.id %>" style="display: inline" method="POST">
     <input type="hidden" name="_method" value="DELETE">
@@ -31,7 +32,7 @@
   </form>
 
 </div>
-<!-- _______________ -->
+<!-- ______REVISIONS_________ -->
 
 
 <br>

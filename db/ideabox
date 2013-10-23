@@ -2,324 +2,221 @@
 ideas:
 - title: New Idea
   id: 0
-  description: THINGS
-  rank: 8
-  tags: TAg2, ok
-  created_at: 2013-10-19 11:30:49.000000000 -06:00
-  updated_at: '2013-10-21 22:21:07 -0600'
+  description: fill the database with ideas
+  rank: 0
+  tags: data, idea, mapper
+  created_at: 2013-05-02 17:26:14.000000000 -06:00
+  updated_at: 2013-10-22 18:16:35.000000000 -06:00
   revisions: &1
   - !ruby/object:Idea
     title: New Idea
-    description: THINGS
+    description: fill the database with ideas
     id: 0
-    created_at: 2013-10-19 11:30:49.000000000 -06:00
-    updated_at: 2013-10-21 18:19:42.000000000 -06:00
-    rank: 4
-    tags: TAg2, yeah
+    created_at: 2013-05-02 17:26:14.000000000 -06:00
+    updated_at: 2013-10-22 17:26:14.000000000 -06:00
+    rank: 0
+    tags: data, idea
     revisions: *1
-  - !ruby/object:Idea
-    title: New Idea
-    description: THINGS
-    id: 0
-    created_at: 2013-10-19 11:30:49.000000000 -06:00
-    updated_at: 2013-10-21 20:59:33.000000000 -06:00
-    rank: 4
-    tags: TAg2, yeah, oh
-    revisions: *1
-  - !ruby/object:Idea
-    title: New Idea
-    description: THINGS
-    id: 0
-    created_at: 2013-10-19 11:30:49.000000000 -06:00
-    updated_at: 2013-10-21 20:59:48.000000000 -06:00
-    rank: 4
-    tags: TAg2, yeah, oh, yeah
-    revisions: *1
-  - !ruby/object:Idea
-    title: New Idea
-    description: THINGS
-    id: 0
-    created_at: 2013-10-19 11:30:49.000000000 -06:00
-    updated_at: 2013-10-21 21:05:00.000000000 -06:00
-    rank: 4
-    tags: TAg2, ok
-    revisions: *1
-  - !ruby/object:Idea
-    title: New Idea
-    description: THINGS
-    id: 0
-    created_at: 2013-10-19 11:30:49.000000000 -06:00
-    updated_at: 2013-10-21 22:20:33.000000000 -06:00
-    rank: 5
-    tags: TAg2, ok
-    revisions: *1
-  - !ruby/object:Idea
-    title: New Idea
-    description: THINGS
-    id: 0
-    created_at: 2013-10-19 11:30:49.000000000 -06:00
-    updated_at: 2013-10-21 22:21:04.000000000 -06:00
-    rank: 6
-    tags: TAg2, ok
-    revisions: *1
-- title: fix ideabox
+- title: drink coffee
   id: 1
-  description: fix bootstrap layout
-  rank: 23
-  tags: bootstrap, layout, test
-  created_at: 2013-10-21 12:54:17.000000000 -06:00
-  updated_at: '2013-10-21 23:01:03 -0600'
+  description: Drink enough coffee to get the project done!
+  rank: 5
+  tags: coffee, mug, french press
+  created_at: 2013-10-11 17:26:46.000000000 -06:00
+  updated_at: 2013-10-22 18:15:24.000000000 -06:00
   revisions: &2
   - !ruby/object:Idea
-    title: fix ideabox
-    description: fix bootstrap layout
+    title: drink coffee
+    description: Drink enough coffee to get the project done!
     id: 1
-    created_at: 2013-10-21 12:54:17.000000000 -06:00
-    updated_at: 2013-10-21 22:47:54.000000000 -06:00
-    rank: 19
-    tags: bootstrap, layout
+    created_at: 2013-10-11 17:26:46.000000000 -06:00
+    updated_at: 2013-10-22 17:26:46.000000000 -06:00
+    rank: 5
+    tags: coffee, caffiene
     revisions: *2
   - !ruby/object:Idea
-    title: fix ideabox
-    description: fix bootstrap layout
+    title: drink coffee
+    description: Drink enough coffee to get the project done!
     id: 1
-    created_at: 2013-10-21 12:54:17.000000000 -06:00
-    updated_at: 2013-10-21 22:49:14.000000000 -06:00
-    rank: 22
-    tags: bootstrap, layout, test
+    created_at: 2013-10-11 17:26:46.000000000 -06:00
+    updated_at: 2013-10-22 18:15:00.000000000 -06:00
+    rank: 5
+    tags: coffee
     revisions: *2
-  - !ruby/object:Idea
-    title: fix ideabox
-    description: fix bootstrap layout
-    id: 1
-    created_at: 2013-10-21 12:54:17.000000000 -06:00
-    updated_at: 2013-10-21 22:50:01.000000000 -06:00
-    rank: 22
-    tags: bootstrap, layout, test, redirect
-    revisions: *2
-  - !ruby/object:Idea
-    title: fix ideabox
-    description: fix bootstrap layout
-    id: 1
-    created_at: 2013-10-21 12:54:17.000000000 -06:00
-    updated_at: 2013-10-21 22:50:38.000000000 -06:00
-    rank: 22
-    tags: bootstrap, layout, test, redirect from edit
-    revisions: *2
-  - !ruby/object:Idea
-    title: fix ideabox
-    description: fix bootstrap layout
-    id: 1
-    created_at: 2013-10-21 12:54:17.000000000 -06:00
-    updated_at: 2013-10-21 22:51:30.000000000 -06:00
-    rank: 22
-    tags: bootstrap, layout, test, redirect from edit
-    revisions: *2
-  - !ruby/object:Idea
-    title: fix ideabox
-    description: fix bootstrap layout
-    id: 1
-    created_at: 2013-10-21 12:54:17.000000000 -06:00
-    updated_at: 2013-10-21 22:51:36.000000000 -06:00
-    rank: 22
-    tags: bootstrap, layout, test, redirect from edit
-    revisions: *2
-- title: gatorade
+- title: gym
   id: 2
-  description: drink more water!
-  rank: 11
-  tags: water, gatorade, purple drank, updated
-  created_at: 2013-10-21 14:08:30.000000000 -06:00
-  updated_at: 2013-10-22 15:29:17.000000000 -06:00
+  description: Go to the gym
+  rank: 1
+  tags: gym, gettin' huge
+  created_at: 2013-07-16 17:27:07.000000000 -06:00
+  updated_at: 2013-10-22 17:27:07.000000000 -06:00
+  revisions: []
+- title: best idea ever
+  id: 3
+  description: really, it's awesome
+  rank: 0
+  tags: greatness
+  created_at: 2013-10-22 17:27:23.000000000 -06:00
+  updated_at: 2013-10-22 17:27:23.000000000 -06:00
+  revisions: []
+- title: horrible idea
+  id: 4
+  description: meh
+  rank: 0
+  tags: meh, horrible
+  created_at: 2013-10-28 17:27:39.000000000 -06:00
+  updated_at: 2013-10-22 17:27:39.000000000 -06:00
+  revisions: []
+- title: Sleepy
+  id: 5
+  description: Get enough sleep to disregard coffee idea
+  rank: 2
+  tags: sleep, rest, restful, productivity
+  created_at: 2013-10-22 17:28:22.000000000 -06:00
+  updated_at: 2013-10-22 18:19:02.000000000 -06:00
   revisions: &3
   - !ruby/object:Idea
-    title: drink water
-    description: MORE WATER
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 18:19:01.000000000 -06:00
+    title: Sleep
+    description: Get enough sleep to disregard coffee idea
+    id: 5
+    created_at: 2013-13-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-22 17:28:22.000000000 -06:00
+    rank: 0
+    tags: sleep, rest, restful, productivity
+    revisions: *3
+  - !ruby/object:Idea
+    title: Sleep
+    description: Get enough sleep to disregard coffee idea
+    id: 5
+    created_at: 2013-10-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-22 17:29:17.000000000 -06:00
     rank: 1
-    tags: water, drink
+    tags: sleep, rest, restful, productivity
     revisions: *3
   - !ruby/object:Idea
-    title: drink water
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 21:14:00.000000000 -06:00
-    rank: 3
-    tags: water, drink, hydration
+    title: Sleepy
+    description: Get enough sleep to disregard coffee idea
+    id: 5
+    created_at: 2013-10-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-22 18:18:01.000000000 -06:00
+    rank: 2
+    tags: sleep, rest, restful, productivity
     revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 21:15:33.000000000 -06:00
-    rank: 3
-    tags: water, drink, hydration, gatorade is the best
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 21:35:46.000000000 -06:00
-    rank: 3
-    tags: water, drink, hydration, gatorade is the best, bottle
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 21:36:00.000000000 -06:00
-    rank: 3
-    tags: water, drink, hydration, gatorade is the best
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 21:36:40.000000000 -06:00
-    rank: 3
-    tags: water, gas
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 21:36:53.000000000 -06:00
-    rank: 3
-    tags: water, gatorade
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 22:11:56.000000000 -06:00
-    rank: 4
-    tags: water, gatorade
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 22:12:52.000000000 -06:00
-    rank: 5
-    tags: water, gatorade
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 22:27:46.000000000 -06:00
-    rank: 6
-    tags: water, gatorade
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 22:30:53.000000000 -06:00
-    rank: 7
-    tags: water, gatorade
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-21 22:51:49.000000000 -06:00
-    rank: 9
-    tags: water, gatorade
-    revisions: *3
-  - !ruby/object:Idea
-    title: gatorade
-    description: drink more water!
-    id: 2
-    created_at: 2013-10-21 14:08:30.000000000 -06:00
-    updated_at: 2013-10-22 08:15:21.000000000 -06:00
-    rank: 10
-    tags: water, gatorade, purple drank
-    revisions: *3
-- title: finish ideabox
-  description: get er' done!
-  rank: 3
-  tags: champion, yeah
-  created_at: 2013-10-21 16:23:19.000000000 -06:00
-  updated_at: 2013-10-21 22:28:25.000000000 -06:00
+- title: Winner
+  id: 6
+  description: winner, winner, chicken dinner
+  rank: 0
+  tags: winner, chicken dinner
+  created_at: 2013-10-22 17:28:56.000000000 -06:00
+  updated_at: 2013-10-22 17:28:56.000000000 -06:00
+  revisions: []
+- title: New Idea
+  id: 7
+  description: fill the database with ideas
+  rank: 0
+  tags: data, idea
+  created_at: 2013-05-22 17:26:14.000000000 -06:00
+  updated_at: 2013-10-10 17:26:14.000000000 -06:00
+  revisions: []
+- title: brew coffee
+  id: 8
+  description: Brew coffee to get the project done!
+  rank: 6
+  tags: coffee, caffiene
+  created_at: 2013-02-20 16:26:46.000000000 -07:00
+  updated_at: 2013-10-22 17:59:09.000000000 -06:00
   revisions: &4
   - !ruby/object:Idea
-    title: finish ideabox
-    description: get er' done!
-    id: 3
-    created_at: 2013-10-21 16:23:19.000000000 -06:00
-    updated_at: 2013-10-21 18:19:13.000000000 -06:00
-    rank: 1
-    tags: champion, yeah
+    title: drink coffee
+    description: Drink enough coffee to get the project done!
+    id: 8
+    created_at: 2013-02-22 16:26:46.000000000 -07:00
+    updated_at: 2013-10-22 17:26:46.000000000 -06:00
+    rank: 4
+    tags: coffee, caffiene
     revisions: *4
   - !ruby/object:Idea
-    title: finish ideabox
-    description: get er' done!
-    id: 3
-    created_at: 2013-10-21 16:23:19.000000000 -06:00
-    updated_at: 2013-10-21 22:20:08.000000000 -06:00
-    rank: 2
-    tags: champion, yeah
+    title: drink coffee
+    description: Drink enough coffee to get the project done!
+    id: 8
+    created_at: 2013-02-22 16:26:46.000000000 -07:00
+    updated_at: 2013-10-22 17:57:31.000000000 -06:00
+    rank: 4
+    tags: coffee, caffiene
     revisions: *4
-- title: more stickers
-  description: get more stickers for the water bottle
-  rank: 4
-  tags: water, bottle, sticker
-  created_at: 2013-10-21 17:36:17.000000000 -06:00
-  updated_at: 2013-10-22 08:30:11.000000000 -06:00
+- title: gym
+  id: 9
+  description: Go to the gym
+  rank: 1
+  tags: gym, gettin' huge
+  created_at: 2013-10-22 17:27:07.000000000 -06:00
+  updated_at: 2013-10-22 17:27:07.000000000 -06:00
+  revisions: []
+- title: bestest idea ever
+  id: 10
+  description: really, it's awesome
+  rank: 14
+  tags: greatness
+  created_at: 2013-10-22 17:27:23.000000000 -06:00
+  updated_at: 2013-10-22 18:20:15.000000000 -06:00
   revisions: &5
   - !ruby/object:Idea
-    title: more stickers
-    description: get more stickers for the water bottle
-    id: 4
-    created_at: 2013-10-21 17:36:17.000000000 -06:00
-    updated_at: 2013-10-21 18:19:10.000000000 -06:00
-    rank: 1
-    tags: water, bottle, sticker
+    title: bestest idea ever
+    description: really, it's awesome. WOOO
+    id: 10
+    created_at: 2013-10-22 17:27:23.000000000 -06:00
+    updated_at: 2013-10-22 18:20:05.000000000 -06:00
+    rank: 14
+    tags: greatness
     revisions: *5
-  - !ruby/object:Idea
-    title: more stickers
-    description: get more stickers for the water bottle
-    id: 4
-    created_at: 2013-10-21 17:36:17.000000000 -06:00
-    updated_at: 2013-10-21 22:28:07.000000000 -06:00
-    rank: 2
-    tags: water, bottle, sticker
-    revisions: *5
-- title: to-do list
-  description: Make a to-do list with specifics
+- title: greatest idea
+  id: 11
+  description: meh
   rank: 1
-  tags: to-do, list, agenda
-  created_at: 2013-10-21 21:52:43.000000000 -06:00
-  updated_at: 2013-10-21 22:27:49.000000000 -06:00
+  tags: meh, horrible
+  created_at: 2013-10-22 17:27:39.000000000 -06:00
+  updated_at: 2013-10-22 20:01:39.000000000 -06:00
   revisions: &6
   - !ruby/object:Idea
-    title: to-do list
-    description: Make a to-do list with specifics
-    id: 5
-    created_at: 2013-10-21 21:52:43.000000000 -06:00
-    updated_at: 2013-10-21 21:52:43.000000000 -06:00
-    rank: 0
-    tags: to-do, list, agenda
+    title: horrible idea
+    description: meh
+    id: 11
+    created_at: 2013-10-22 17:27:39.000000000 -06:00
+    updated_at: 2013-10-22 17:27:39.000000000 -06:00
+    rank: 1
+    tags: meh, horrible
     revisions: *6
-- title: music
-  id: 6
-  description: music
+- title: Sleep
+  id: 12
+  description: Get enough sleep to disregard coffee idea
+  rank: 1
+  tags: sleep, rest, restful, productivity
+  created_at: 2013-10-22 17:28:22.000000000 -06:00
+  updated_at: 2013-10-22 17:29:17.000000000 -06:00
+  revisions: &7
+  - !ruby/object:Idea
+    title: Sleep
+    description: Get enough sleep to disregard coffee idea
+    id: 5
+    created_at: 2013-10-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-22 17:28:22.000000000 -06:00
+    rank: 0
+    tags: sleep, rest, restful, productivity
+    revisions: *7
+- title: Winner, winner
+  id: 13
+  description: winner, winner, chicken dinner
   rank: 0
-  tags: yeah
-  created_at: 2013-10-22 15:02:44.000000000 -06:00
-  updated_at: '2013-10-22 15:02:44 -0600'
-  revisions: []
+  tags: winner, chicken dinner
+  created_at: 2013-10-22 17:28:56.000000000 -06:00
+  updated_at: 2013-10-22 18:05:30.000000000 -06:00
+  revisions: &8
+  - !ruby/object:Idea
+    title: Winner
+    description: winner, winner, chicken dinner
+    id: 13
+    created_at: 2013-10-22 17:28:56.000000000 -06:00
+    updated_at: 2013-10-22 17:28:56.000000000 -06:00
+    rank: 0
+    tags: winner, chicken dinner
+    revisions: *8

@@ -1,27 +1,44 @@
+<% if day_name == 'all' %>
 
-  <h1>Your Ideas By Day:</h1>
-  <% if search == 'all' %>
-    <% store.day_values.each do |day| %>
-      <dl>
-      <h2><%= day %></h2>
-
-      <% store.find_by_day(day).each do |idea| %>
-
-        <% if idea.nil? %>
-          <p>There are no ideas for <%= day %></p>
-        <% else %>
-
-        <li><%= erb :idea, locals: {idea: idea}%></li>
+  <% store.day_names.each do |day| %>
+    <h3><%= day %></h3>
+    <% if store.find_by_day(day[0...3]).count == 0 %>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <em>There are currently no ideas for this day.</em>
+          <a style="float: right; display: inline" href="/existing_ideas">View All Existing Ideas »</a>
           <br>
-        <% end %>
-      <% end %>
-    <% end %>
-  <% else %>
-    <h2><%= search %></h2>
+        </li>
 
-    <% ideas.each do |idea| %>
-      <%= erb :idea, :locals => {idea: idea} %>
+    <% else %>  
+      <% store.find_by_day(day[0...3]).each do |idea| %>
+
+      <ul class="list-group">
+        <li class="list-group-item">
+
+          <%= idea.title %>
+          <a style="float: right; display: inline" href="/<%= idea.id %>/details">Idea Details »</a>
+          <br>
+        </li>
+        <% end %>
+
+    <% end %>
+
+  </ul>
+
+  <% end %>
+
+<% else %>
+
+  <% full_name = store.day_names.select {|name| name.include? day_name}.first %>
+  <h3>Ideas For <em>'<%= full_name %>'</em>: </h3>
+  <legend></legend>
+  <% if store.find_by_day(day_name).count == 0 %>
+    <h5><em>There are currently no ideas for '<%= full_name %>'</em></h5>
+  <% else %>  
+    <% store.find_by_day(day_name).each do |idea| %>
+    <%= erb :idea, :locals => {idea: idea} %>
     <% end %>
   <% end %>
 
-</dl>
+<% end %>

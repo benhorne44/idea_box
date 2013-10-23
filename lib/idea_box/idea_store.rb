@@ -75,6 +75,15 @@ class IdeaStore
       ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     end
 
+    def self.day_names
+      ['Monday', 'Tuesday', 'Wednesday', 'Thursday',
+       'Friday', 'Saturday', 'Sunday']
+    end
+
+    def self.ideas_grouped_by_day
+      all.group_by {|idea| idea.created_at.strftime("%A")}
+    end
+
     def self.time_values
       ['00', '01', '02', '03', '04', '05', '06', '07',
        '08', '09', '10', '11', '12', '13', '14', '15',
