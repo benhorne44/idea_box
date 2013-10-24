@@ -1,15 +1,40 @@
 <div class="col-lg-4">
   <div class="well">
-    <!-- LIKE -->
+
     <form action='/<%= idea.id %>/like' method='POST' style="float: right;">
       <input type="submit" class="btn btn-success btn-xs" value='Like'/>
-   
     </form>
-      <!-- _____ -->
       
-    <h2><em><%= idea.title %>  </em></h2>
-    <p><a class="btn btn-primary btn-xs" style="display: inline" href="/<%= idea.id %>/details">View details »</a>
-      </p>
+    <h2>
+      <em><%= idea.title %></em>
+    </h2>
+      
+    <p>
+      <a class="btn btn-primary btn-xs" style="display: inline" href="/<%= idea.id %>/details">
+        View details »
+      </a>
+    </p>
+
+    <div class="btn-group">
+
+      <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+        Tags
+        <span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu">
+
+        <% idea.tags.split(', ').each do |tag_value| %>
+          <li>
+            <a href="/tags/<%= tag_value %>">
+              <%= tag_value %>
+            </a>
+          </li>
+        <% end %>
+
+       </ul>
+
+    </div>
 
   </div>
 </div>

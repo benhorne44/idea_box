@@ -41,6 +41,7 @@ class Idea
 
   def merge(new_data)
     revisions << self
+    revisions.sort_by {|idea| idea.updated_at}
     data = new_data.merge("updated_at" => Time.now)
     Idea.new(data_hash.merge(data))
   end

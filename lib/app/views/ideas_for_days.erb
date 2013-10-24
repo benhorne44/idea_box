@@ -1,44 +1,73 @@
 <% if day_name == 'all' %>
 
-  <% store.day_names.each do |day| %>
+  <h2>Statistics for <em>each day</em>:</h2>
+
+  <% stats.by_day.each do |day, ideas| %>
+    
     <h3><%= day %></h3>
-    <% if store.find_by_day(day[0...3]).count == 0 %>
+    
+    <% if ideas.count == 0 %>
+      
       <ul class="list-group">
         <li class="list-group-item">
+
           <em>There are currently no ideas for this day.</em>
-          <a style="float: right; display: inline" href="/existing_ideas">View All Existing Ideas »</a>
+
+          <a style="float: right; display: inline" href="/existing_ideas">
+            View All Existing Ideas »
+          </a>
+
           <br>
+
         </li>
+      </ul>
 
     <% else %>  
-      <% store.find_by_day(day[0...3]).each do |idea| %>
 
-      <ul class="list-group">
-        <li class="list-group-item">
+      <% ideas.each do |idea| %>
 
-          <%= idea.title %>
-          <a style="float: right; display: inline" href="/<%= idea.id %>/details">Idea Details »</a>
-          <br>
-        </li>
-        <% end %>
+        <ul class="list-group">
+          <li class="list-group-item">
+
+            <%= idea.title %>
+
+            <a style="float: right; display: inline" href="/<%= idea.id %>/details">
+              Idea Details »
+            </a>
+
+            <br>
+
+          </li>
+
+      <% end %>
+
+        </ul>
+
 
     <% end %>
-
-  </ul>
 
   <% end %>
 
 <% else %>
 
-  <% full_name = store.day_names.select {|name| name.include? day_name}.first %>
-  <h3>Ideas For <em>'<%= full_name %>'</em>: </h3>
-  <legend></legend>
-  <% if store.find_by_day(day_name).count == 0 %>
-    <h5><em>There are currently no ideas for '<%= full_name %>'</em></h5>
-  <% else %>  
-    <% store.find_by_day(day_name).each do |idea| %>
-    <%= erb :idea, :locals => {idea: idea} %>
+  <% ideas_for_day.each do |day, ideas| %>
+
+    <h3>Ideas For <em>'<%= day %>'</em>: </h3>
+
+    <legend></legend>
+
+    <% if ideas.count == 0 %>
+
+      <h5><em>There are currently no ideas for '<%= day %>'</em></h5>
+
+    <% else %> 
+
+      <% ideas.each do |idea| %>
+        <%= erb :idea, :locals => {idea: idea} %>
+      <% end %>
+
     <% end %>
+
   <% end %>
 
 <% end %>

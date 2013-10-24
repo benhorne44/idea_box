@@ -1,14 +1,17 @@
-<legend></legend>
-<a class="divider"></a>
 <div id="wrap">
   <div id="main" class="container clear-top">
-        <p>
-          <% store.all_tags_for_ideas.each do |tag| %>
-          <a href="/tags/<%= tag %>">-<%= tag %></a>
-          <% end %>
-        </p>
-        <p class="pull-right"><a href="#top">Back to top</a></p>
+
+    <p>
+      <% all_idea_tags.each do |tag| %>
+        <a href="/tags/<%= tag %>">-<%= tag %></a>
+      <% end %>
+    </p>
+
+    <p class="pull-right">
+      <a href="#top">
+        Back to top
+      </a>
+    </p>
 
   </div>
 </div>
-<footer class="footer"></footer>

@@ -57,7 +57,7 @@ class IdeaStore
       database.transaction {database["ideas"][id] = new_idea.data_hash}
     end
 
-    def self.tag_hash
+    def self.ideas_for_tags
       all_tags_for_ideas.each_with_object({}) do |tag, hash|
         hash[tag] = all.select {|idea| idea.tags.include? tag}
       end

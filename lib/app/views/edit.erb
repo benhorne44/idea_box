@@ -1,24 +1,34 @@
 <form action='/<%= idea.id %>' method='POST'>
 
-  <h2>Edit your Idea:</h2>
-  <div class="well">
+<h2>Edit your Idea:</h2>
+<div class="well">
 
-    <h4>Title:</h4>
-      <input type="text" class="form-control" name='idea[title]' value="<%= idea.title %>">
-      <legend></legend>
+  <h4>Title:</h4>
 
-    <h4>Description:</h4>
-      <textarea class="form-control" name='idea[description]' rows="3" id="textArea"><%= idea.description %></textarea>
-    
-    <h4>Tags:</h4> 
-    <% tags = idea.tags %>   
-      <textarea class="form-control" name='idea[tags]'><%= tags unless tags == "no tag" %></textarea>
-      <br>
-      <button type="submit" style='float: right; display: inline' class="btn btn-primary">Submit Idea</button>
-      <br>
-      <br>
-    <input type="hidden" name="_method" value="PUT" />
-  </div>
+  <input type="text" class="form-control" name='idea[title]' value="<%= idea.title %>">
+
+  <h4>Description:</h4>
+
+  <textarea class="form-control" name='idea[description]' rows="3" id="textArea"><%= idea.description %>
+  </textarea>
+  
+  <h4>Tags:</h4> 
+
+  <textarea class="form-control" name='idea[tags]'><%= idea.tags unless idea.tags == "no tag" %>
+  </textarea>
+
+  <br>
+
+  <button type="submit" style='float: right; display: inline' class="btn btn-primary">
+    Submit Idea
+  </button>
+
+  <br>
+  <br>
+  
+  <input type="hidden" name="_method" value="PUT" />
+
+</div>
 
 </form>
 

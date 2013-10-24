@@ -1,0 +1,40 @@
+<h3>Revision History:</h3>
+
+<br>
+
+<% if idea.revisions == [] %>
+  <p>
+    <em>There are no revisions for this idea on file.</em>
+  </p>
+<% end %>
+
+<% idea.revisions.reverse.each do |revision| %>
+  
+  <h4>
+    <b><%= revision.updated_at.strftime("%b %e, %Y at %l:%M %p") %></b>
+  </h4>
+
+  <div class="well">
+
+    <h5>Title: <em><%= revision.title %></em></h5>
+
+    <h5>Description: <em><%= revision.description %></em></h5>
+
+    <h5>Score: <span class="badge"><%= revision.rank %></span></h5>
+
+    <h5>Tags: 
+
+      <% revision.tags.split(', ').each do |tag_value| %>
+
+      <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
+        <button class="btn btn-primary disabled btn-xs" value='<%= tag_value %>'>
+          <%= tag_value %>
+        </button>
+      </form>
+
+        <% end %>
+
+    </h5>
+  </div>
+
+<% end %>

@@ -19,9 +19,9 @@ class IdeaStoreTest < Minitest::Test
                      "created_at" => "2013-10-19 12:04:25 -0600'")
   end
 
-  # def teardown
-  #   IdeaStore.destroy_database_contents
-  # end
+  def teardown
+    IdeaStore.destroy_database_contents
+  end
 
   def test_the_database_exists
     assert_kind_of Psych::Store, IdeaStore.database

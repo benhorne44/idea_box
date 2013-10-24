@@ -1,85 +1,28 @@
 <% if search.length == 0 %>
+
   <h3>Please enter a keyword or phrase for your search.</h3>
+
 <% else %>
+
   <% if search_ideas.count == 0 %>
       <h3>There are no results for your search '<em><%= search %></em>'</h3><br>
   <% elsif search_ideas %>
+
     <% if search_ideas.count == 1 %>
 
-    <h3>Result for the search '<em><%= search %></em>':</h3><br>
+      <h3>Result for the search '<em><%= search %></em>':</h3><br>
+      
       <%= erb :idea, locals: {idea: search_ideas.first} %>
+
     <% else %>
+
       <h3>Results for the search '<em><%= search %></em>':</h3><br>
+      
       <% search_ideas.each do |idea| %>
         <%= erb :idea, locals: {idea: idea} %>
       <% end %>
-      <% end %>
+
+    <% end %>
 
   <% end %>
 <% end %>   
-
-<!-- <fieldset>
-  <legend><b>Search Your Ideas:</b></legend>
-  <form>
-    <textarea name="opinion" cols='50' placeholder='Search Your Ideas'></textarea>
-    <input type='submit' name='Submit' value='submit' />
-  </form>
-
-  <div class="btn-group">
-    <button type="button" class="btn btn-default">Search By Days</button>
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href='/search/days/Mon'>Monday</li>
-      <li><a href='/search/days/Tue'>Tuesday</li>
-      <li><a href='/search/days/Wed'>Wednesday</li>
-      <li><a href='/search/days/Thu'>Thursday</li>
-      <li><a href='/search/days/Fri'>Friday</li>
-      <li><a href='/search/days/Sat'>Saturday</li>
-      <li><a href='/search/days/Sun'>Sunday</li>
-      <li class="divider"></li>
-      <li><a href="/search/days/all">Search For All Days</a></li>
-    </ul>
-  </div>
-  <div class="btn-group">
-    <style>
-    .menu-dropdown,
-    .dropdown-menu {
-        overflow: auto;
-        maxHeight: 500px;
-    }
-</style>
-    <button type="button" class="btn btn-default">Search By Time Of Day</button>
-    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <li><a href='/search/times/00:'>12:00 - 12:59 AM</li>
-      <li><a href='/search/times/01:'>1:00 - 1:59 AM</li>
-      <li><a href='/search/times/02'>2:00 - 2:59 AM</li>
-      <li><a href='/search/times/03'>3:00 - 3:59 AM</li>
-      <li><a href='/search/times/04'>4:00 - 4:59 AM</li>
-      <li><a href='/search/times/05'>5:00 - 5:59 AM</li>
-      <li><a href='/search/times/06'>6:00 - 6:59 AM</li>
-      <li><a href='/search/times/07'>7:00 - 7:59 AM</li>
-      <li><a href='/search/times/08'>8:00 - 8:59 AM</li>
-      <li><a href='/search/times/09'>9:00 - 9:59 AM</li>
-      <li><a href='/search/times/10'>10:00 - 10:59 AM</li>
-      <li><a href='/search/times/11'>11:00 - 11:59 AM</li>
-      <li><a href='/search/times/12'>12:00 - 12:59 PM</li>
-      <li><a href='/search/times/13'>1:00 - 1:59 PM</li>
-      <li><a href='/search/times/14'>2:00 - 2:59 PM</li>
-      <li><a href='/search/times/15'>3:00 - 3:59 PM</li>
-      <li><a href='/search/times/16'>4:00 - 4:59 PM</li>
-      <li><a href='/search/times/17'>5:00 - 5:59 PM</li>
-      <li><a href='/search/times/18'>6:00 - 6:59 PM</li>
-      <li><a href='/search/times/19'>7:00 - 7:59 PM</li>
-      <li><a href='/search/times/20'>8:00 - 8:59 PM</li>
-      <li><a href='/search/times/21'>9:00 - 9:59 PM</li>
-      <li><a href='/search/times/22'>10:00 - 10:59 PM</li>
-      <li><a href='/search/times/23'>11:00 - 11:59 PM</li>
-      
-      <li class="divider"></li>
-      <li><a href="/search/times/all">Search For All Times</a></li>
-    </ul>
-  </div>
-
-</fieldset>
- -->

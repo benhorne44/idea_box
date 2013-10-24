@@ -1,16 +1,1 @@
 
-<h3>Your Tags:</h3>
-
-<% store.all_tags_for_ideas.each do |tag_value| %>
-  <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
-    <button type="submit"><%= tag_value %></button>
-  </form>
-<% end %>
-
-<form method="get" action="/tags/all">
-  <br>
-  <button type="submit">All Tags</button>
-</form>
-
-
-

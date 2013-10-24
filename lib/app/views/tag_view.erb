@@ -1,31 +1,35 @@
+<% if tag_value == 'all'%>
+  
+  <h1>Your Ideas By Tag:</h1>
 
-<p>
-  <% if tag == 'all'%>
-    
-    <h1>Your Ideas By Tag:</h1>
-      <% ideas.all_tags_for_ideas.sort.each do |tag| %>
+  <% ideas_for_tags.each do |tag, ideas| %>
 
-      <h3><a href="/tags/<%= tag %>"><%= tag %></a></h3>
-      
-        <% ideas.tag_hash[tag].each do |idea| %>
-        <br>
-        
-        <%= erb :idea, locals: {idea: idea}%>
-        <% end %>
-      <% end %>
-  <% elsif ideas.tag_hash[tag].nil? %>
-    <h3>There are no known ideas with the tag '<em><%= tag %></em>'</h3>
-    <dl><h5>Please click <a href='/existing_ideas'>here</a> for all current ideas.</h5></dl>
-  <% else%>
-    <% if ideas.tag_hash[tag].count == 1 %>
-    <h3>Your Idea For '<em><%= tag %></em>':</h3><br>
-      <%= erb :idea, locals: {idea: ideas.tag_hash[tag].first}%>
-    <% else %>
-    <h3>Your Ideas For '<em><%= tag %></em>':</h3><br>
-      <% ideas.tag_hash[tag].each do |idea| %> 
+    <h3><a href="/tags/<%= tag %>"><%= tag %></a></h3>
+  
+    <% ideas.each do |idea| %>
+      <br>
       <%= erb :idea, locals: {idea: idea}%>
-      <% end %>
-      <% end %>
+    <% end %>
+
   <% end %>
-</p>
+
+<% else%>
+
+  <% if ideas_for_tags[tag_value].count == 1 %>
+
+    <h3>Your Idea For '<em><%= tag_value %></em>':</h3><br>
+
+    <%= erb :idea, locals: {idea: ideas_for_tags[tag_value].first}%>
+
+  <% else %>
+
+  <h3>Your Ideas For '<em><%= tag_value %></em>':</h3><br>
+
+    <% ideas_for_tags[tag_value].each do |idea| %> 
+      <%= erb :idea, locals: {idea: idea}%>
+    <% end %>
+
+  <% end %>
+  
+<% end %>
 

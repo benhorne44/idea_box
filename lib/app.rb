@@ -1,6 +1,5 @@
 require 'sinatra/base'
-require './lib/idea_box/idea'
-require './lib/idea_box/idea_store'
+require './lib/ideabox'
 
 
 
@@ -9,15 +8,8 @@ class IdeaBoxApp < Sinatra::Base
   set :method_override, true
   set :root, 'lib/app'
 
-  # configure :development do
-  #   register Sinatra::Reloader
-  # end
-
   get '/' do
     erb :index
-    # erb :index, :locals => {ideas: IdeaStore.all.sort,
-    #                         idea: Idea.new,
-    #                         store: IdeaStore}
   end
 
   post '/' do
@@ -38,7 +30,7 @@ class IdeaBoxApp < Sinatra::Base
 
   put '/:id' do |id|
     IdeaStore.update(id.to_i, params[:idea])
-    redirect '/existing_ideas'
+    redirect "/#{id}/details"
   end
 
   get '/:id/details' do |id|
@@ -58,49 +50,87 @@ class IdeaBoxApp < Sinatra::Base
   end
 
   get '/tags/:tag' do
-    erb :tag_view, :locals => {ideas: IdeaStore,
-                               tag: params[:tag]}
+    tag_value = params[:tag]
+    ideas_for_tags = IdeaStore.ideas_for_tags
+    erb :tag_view, :locals => {tag_value: tag_value,
+                               ideas_for_tags: ideas_for_tags}
   end
 
   get '/statistics/days/:day' do
-    ideas = IdeaStore.find_by_day(params[:day])
-    erb :ideas_for_days, :locals => {ideas: ideas,
+    stats = IdeaStatistics.new
+    ideas_for_day = stats.by_day.select {|day,ideas| (day =~ /#{params[:day]}/)}
+    erb :ideas_for_days, :locals => {stats: stats,
                                      day_name: params[:day],
-                                     store: IdeaStore}
+                                     ideas_for_day: ideas_for_day}
   end
 
-  get '/search/times/:search_value' do
-    search_value = params[:search_value]
-    ideas = IdeaStore.find_by_time(params[:search_value])
-    erb :ideas_for_times, :locals => {ideas: ideas, search: search_value, store: IdeaStore}
+  get '/statistics/times/:time_value' do
+    stats = IdeaStatistics.new
+    ideas_for_time = stats.by_hour.select do |hour,ideas|
+      (hour =~ /#{params[:time_value]}/)
+    end
+    time_value = params[:time_value]
+    ideas = IdeaStore.find_by_time(params[:time_value])
+    erb :ideas_for_times, :locals => {stats: stats,
+                                      ideas_for_time: ideas_for_time,
+                                      time_value: time_value}
   end
 
   get '/search/ideas' do
     ideas = IdeaStore.search(params[:search_value])
-    erb :search, :locals => {search_ideas: ideas, search: params[:search_value]}
+    erb :search, :locals => {search_ideas: ideas,
+                             search: params[:search_value]}
   end
 
   get '/statistics' do
+    stats = IdeaStatistics.new
     sorted_ideas = IdeaStore.all.sort_by {|idea| idea.created_at}
-    erb :statistics, :locals => {store: IdeaStore, sorted_ideas: sorted_ideas}
+    # max_idea_day = store.day_names.max_by{|day| store.find_by_day(day[0...3]).count }
+    # min_idea_day = "something"
+    # total_idea_count = { "Mon" => 1 }
+
+    # erb :statistics, :locals => { max_idea_day: stats.max_idea_day, min_idea_day: stats.min_idea_day, total_idea_count: stats.total_idea_count}
+    # erb :statistics, :locals => { stats: stats }
+    erb :statistics, :locals => {stats: stats, store: IdeaStore, sorted_ideas: sorted_ideas}
+  end
+
+  class IdeaFilter
+    def initialize(sort_by)
+      @sort_by = sort_by
+    end
+
+    attr_reader :sort_by
+
+    def ideas
+      if sort_by == 'title'
+        IdeaStore.sort_by_title
+      elsif sort_by == 'day'
+        IdeaStore.sort_by_day
+      elsif sort_by == 'time'
+        IdeaStore.sort_by_created_at_date
+      elsif sort_by == 'tag'
+        IdeaStore.sort_by_tag_count
+      end
+    end
+
+    def param
+      if sort_by == 'title'
+        'title'
+      elsif sort_by == 'day'
+        'day'
+      elsif sort_by == 'time'
+        'date created'
+      elsif sort_by == 'tag'
+        'tag count'
+      end
+    end
   end
 
   get '/sort/:sort_by' do
-    if params[:sort_by] == 'title'
-      ideas = IdeaStore.sort_by_title
-      param = 'title'
-    elsif params[:sort_by] == 'day'
-      ideas = IdeaStore.sort_by_day
-      param = 'day'
-    elsif params[:sort_by] == 'time'
-      ideas = IdeaStore.sort_by_created_at_date
-      param = 'date created'
-    elsif params[:sort_by] == 'tag'
-      ideas = IdeaStore.sort_by_tag_count
-      param = 'tag count'
-    end
+    ideas_filtered = IdeaFilter.new(params[:sort_by])
+    ideas = ideas_filtered.ideas
+    param = ideas_filtered.param
     erb :sorted_ideas, :locals => {ideas: ideas, param: param}
-
   end
 
   get '/existing_ideas' do
@@ -111,6 +141,11 @@ class IdeaBoxApp < Sinatra::Base
     def new_idea
       Idea.new
     end
+
+    def all_idea_tags
+      IdeaStore.all_tags_for_ideas
+    end
+
   end
 
 end
