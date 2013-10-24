@@ -197,6 +197,21 @@ class IdeaStoreTest < Minitest::Test
     assert_equal ["hello", "heyo partner", "howdy"], results
   end
 
+  def test_it_can_sort_by_date_created
+    idea1 = IdeaStore.create("title"       => "Heyo Partner",
+                     "description" => "Only two things are infinite,
+                                       the universe and human stupidity,
+                                       and I'm not sure about the former.",
+                     "created_at"  => '2013-10-17 17:47:51.000000000 -06:00')
+    idea2 = IdeaStore.create("title"       => "Howdy Howdy",
+                     "description" => "Only two things are infinite,
+                                       the universe and human stupidity,
+                                       and I'm not sure about the former.",
+                     "created_at"  => "#{Time.now}")
+    results = IdeaStore.sort_by_created_at_date.map {|idea| idea.title}
+    assert_equal ["Howdy Howdy", "Howdy", "Hello", "Heyo Partner"], results
+  end
+
   def test_it_can_sort_by_tag_count
     idea1 = IdeaStore.create("title" => "A",
                              "tags" => "green, blue, yellow")

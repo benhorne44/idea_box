@@ -5,11 +5,11 @@
 
   <h4>Title:</h4>
 
-  <input type="text" class="form-control" name='idea[title]' value="<%= idea.title %>">
+  <input type="text" class="form-control" name='idea[title]' value="<%= idea.title %>" required>
 
   <h4>Description:</h4>
 
-  <textarea class="form-control" name='idea[description]' rows="3" id="textArea"><%= idea.description %>
+  <textarea class="form-control" name='idea[description]' rows="3" id="textArea" required><%= idea.description %>
   </textarea>
   
   <h4>Tags:</h4> 

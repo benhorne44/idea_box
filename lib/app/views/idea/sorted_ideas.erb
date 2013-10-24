@@ -31,6 +31,47 @@
 
    
     <% end %>
+
+  <% elsif param == 'date created' %>
+
+    <% filtered_ideas.each do |idea| %>
+      
+        <ul class="list-group">
+          <li class="list-group-item">
+
+            <%= idea.created_at.strftime("%A, %D at %l:%M") %>
+
+            <a style="float: right; display: inline" href="/<%= idea.id %>/details">
+              Idea Details »
+            </a>
+
+            <br>
+
+          </li>
+        </ul>
+
+      <% end %>
+        
+    <% elsif param == 'tag count' %>
+
+      <% filtered_ideas.each do |idea| %>
+      
+        <ul class="list-group">
+
+          <li class="active" style='margin-left: 10px;display: inline'>
+            
+            <li class="list-group-item">
+              <span class="badge"><%= idea.tags.count %></span>
+              <a href='/<%= idea.id %>/details'><%= idea.title %></a>
+            </li>
+
+          </li>
+       
+        </ul>
+
+      <% end %>
+   
   <% end %>
+
 <% end %>
 
