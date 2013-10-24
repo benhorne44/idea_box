@@ -94,7 +94,8 @@ class IdeaStore
     end
 
     def self.sort_by_created_at_date
-      all.sort_by {|idea| idea.created_at}.reverse
+      grouped = all.group_by {|idea| idea.created_at}
+      grouped.sort_by {|date, ideas| date }.reverse
     end
 
     def self.sort_by_day

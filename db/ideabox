@@ -160,10 +160,21 @@ ideas:
   id: 3
   description: really, it's awesome
   rank: 0
-  tags: greatness
+  tags:
+  - greatness
+  - submit project
   created_at: 2013-10-22 17:27:23.000000000 -06:00
-  updated_at: 2013-10-22 17:27:23.000000000 -06:00
-  revisions: []
+  updated_at: 2013-10-24 08:54:54.000000000 -06:00
+  revisions: &4
+  - !ruby/object:Idea
+    title: best idea ever
+    description: really, it's awesome
+    id: 3
+    created_at: 2013-10-22 17:27:23.000000000 -06:00
+    updated_at: 2013-10-22 17:27:23.000000000 -06:00
+    rank: 0
+    tags: greatness
+    revisions: *4
 - title: horrible idea
   id: 4
   description: meh
@@ -179,7 +190,7 @@ ideas:
   tags: sleep, rest, restful, productivity
   created_at: 2013-10-22 17:28:22.000000000 -06:00
   updated_at: 2013-10-22 18:19:02.000000000 -06:00
-  revisions: &4
+  revisions: &5
   - !ruby/object:Idea
     title: Sleep
     description: Get enough sleep to disregard coffee idea
@@ -188,7 +199,7 @@ ideas:
     updated_at: 2013-10-22 17:28:22.000000000 -06:00
     rank: 0
     tags: sleep, rest, restful, productivity
-    revisions: *4
+    revisions: *5
   - !ruby/object:Idea
     title: Sleep
     description: Get enough sleep to disregard coffee idea
@@ -197,7 +208,7 @@ ideas:
     updated_at: 2013-10-22 17:29:17.000000000 -06:00
     rank: 1
     tags: sleep, rest, restful, productivity
-    revisions: *4
+    revisions: *5
   - !ruby/object:Idea
     title: Sleepy
     description: Get enough sleep to disregard coffee idea
@@ -206,7 +217,7 @@ ideas:
     updated_at: 2013-10-22 18:18:01.000000000 -06:00
     rank: 2
     tags: sleep, rest, restful, productivity
-    revisions: *4
+    revisions: *5
 - title: Winner
   id: 6
   description: winner, winner, chicken dinner
@@ -214,7 +225,7 @@ ideas:
   tags: winner, YEAH, I win
   created_at: 2013-10-22 17:28:56.000000000 -06:00
   updated_at: 2013-10-23 21:09:49.000000000 -06:00
-  revisions: &5
+  revisions: &6
   - !ruby/object:Idea
     title: Winner
     description: winner, winner, chicken dinner
@@ -223,7 +234,7 @@ ideas:
     updated_at: 2013-10-22 17:28:56.000000000 -06:00
     rank: 0
     tags: winner, chicken dinner
-    revisions: *5
+    revisions: *6
   - !ruby/object:Idea
     title: Winner
     description: 'winner, winner, chicken dinner  '
@@ -232,7 +243,7 @@ ideas:
     updated_at: 2013-10-23 16:24:45.000000000 -06:00
     rank: 0
     tags: 'winner, chicken dinner  '
-    revisions: *5
+    revisions: *6
   - !ruby/object:Idea
     title: Winner
     description: winner, winner, chicken dinner
@@ -241,7 +252,7 @@ ideas:
     updated_at: 2013-10-23 16:25:38.000000000 -06:00
     rank: 0
     tags: 'winner, chicken dinner    '
-    revisions: *5
+    revisions: *6
   - !ruby/object:Idea
     title: Winner
     description: 'winner, winner, chicken dinner  '
@@ -250,7 +261,7 @@ ideas:
     updated_at: 2013-10-23 21:03:23.000000000 -06:00
     rank: 0
     tags: winner
-    revisions: *5
+    revisions: *6
   - !ruby/object:Idea
     title: Winner
     description: 'winner, winner, chicken dinner    '
@@ -259,7 +270,7 @@ ideas:
     updated_at: 2013-10-23 21:03:44.000000000 -06:00
     rank: 0
     tags: winner
-    revisions: *5
+    revisions: *6
 - title: New Idea
   id: 7
   description: fill the database with ideas
@@ -275,7 +286,7 @@ ideas:
   tags: coffee, caffeine
   created_at: 2013-02-20 16:26:46.000000000 -07:00
   updated_at: 2013-10-23 21:06:39.000000000 -06:00
-  revisions: &6
+  revisions: &7
   - !ruby/object:Idea
     title: drink coffee
     description: Drink enough coffee to get the project done!
@@ -284,7 +295,7 @@ ideas:
     updated_at: 2013-10-22 17:26:46.000000000 -06:00
     rank: 4
     tags: coffee, caffiene
-    revisions: *6
+    revisions: *7
   - !ruby/object:Idea
     title: drink coffee
     description: Drink enough coffee to get the project done!
@@ -293,7 +304,7 @@ ideas:
     updated_at: 2013-10-22 17:57:31.000000000 -06:00
     rank: 4
     tags: coffee, caffiene
-    revisions: *6
+    revisions: *7
   - !ruby/object:Idea
     title: brew coffee
     description: Brew coffee to get the project done!
@@ -302,7 +313,7 @@ ideas:
     updated_at: 2013-10-22 17:59:09.000000000 -06:00
     rank: 6
     tags: coffee, caffiene
-    revisions: *6
+    revisions: *7
   - !ruby/object:Idea
     title: brew coffee
     description: 'Brew coffee to get the project done!  '
@@ -311,7 +322,7 @@ ideas:
     updated_at: 2013-10-23 20:55:59.000000000 -06:00
     rank: 6
     tags: 'coffee, caffeine, coffee  '
-    revisions: *6
+    revisions: *7
 - title: gym
   id: 9
   description: Go to the gym
@@ -319,7 +330,7 @@ ideas:
   tags: gym, gettin' huge, swole
   created_at: 2013-10-22 17:27:07.000000000 -06:00
   updated_at: 2013-10-23 08:50:00.000000000 -06:00
-  revisions: &7
+  revisions: &8
   - !ruby/object:Idea
     title: gym
     description: Go to the gym
@@ -328,7 +339,7 @@ ideas:
     updated_at: 2013-10-22 17:27:07.000000000 -06:00
     rank: 25
     tags: gym, gettin' huge
-    revisions: *7
+    revisions: *8
 - title: bestest idea ever
   id: 10
   description: really, it's really, really, awesome
@@ -336,7 +347,7 @@ ideas:
   tags: awesome, greatness, test, tag1, tag2
   created_at: 2013-10-22 17:27:23.000000000 -06:00
   updated_at: 2013-10-23 12:08:40.000000000 -06:00
-  revisions: &8
+  revisions: &9
   - !ruby/object:Idea
     title: bestest idea ever
     description: really, it's awesome. WOOO
@@ -345,7 +356,7 @@ ideas:
     updated_at: 2013-10-22 18:20:05.000000000 -06:00
     rank: 14
     tags: greatness
-    revisions: *8
+    revisions: *9
   - !ruby/object:Idea
     title: bestest idea ever
     description: really, it's awesome
@@ -354,7 +365,7 @@ ideas:
     updated_at: 2013-10-22 18:20:15.000000000 -06:00
     rank: 14
     tags: greatness
-    revisions: *8
+    revisions: *9
   - !ruby/object:Idea
     title: bestest idea ever
     description: really, it's really, really, awesome
@@ -363,7 +374,7 @@ ideas:
     updated_at: 2013-10-22 21:06:52.000000000 -06:00
     rank: 14
     tags: awesome, greatness
-    revisions: *8
+    revisions: *9
   - !ruby/object:Idea
     title: bestest idea ever
     description: really, it's really, really, awesome
@@ -372,7 +383,7 @@ ideas:
     updated_at: 2013-10-23 11:52:53.000000000 -06:00
     rank: 14
     tags: awesome, greatness, test, tag1, tag2,  hahahahahahahahaha
-    revisions: *8
+    revisions: *9
 - title: greatest idea
   id: 11
   description: meh
@@ -380,7 +391,7 @@ ideas:
   tags: meh, horrible
   created_at: 2013-10-22 17:27:39.000000000 -06:00
   updated_at: 2013-10-22 20:01:39.000000000 -06:00
-  revisions: &9
+  revisions: &10
   - !ruby/object:Idea
     title: horrible idea
     description: meh
@@ -389,7 +400,7 @@ ideas:
     updated_at: 2013-10-22 17:27:39.000000000 -06:00
     rank: 1
     tags: meh, horrible
-    revisions: *9
+    revisions: *10
 - title: Sleep
   id: 12
   description: 'Get enough sleep to disregard coffee idea      '
@@ -397,7 +408,7 @@ ideas:
   tags: ''
   created_at: 2013-10-22 17:28:22.000000000 -06:00
   updated_at: 2013-10-23 21:06:08.000000000 -06:00
-  revisions: &10
+  revisions: &11
   - !ruby/object:Idea
     title: Sleep
     description: Get enough sleep to disregard coffee idea
@@ -406,7 +417,7 @@ ideas:
     updated_at: 2013-10-22 17:28:22.000000000 -06:00
     rank: 0
     tags: sleep, rest, restful, productivity
-    revisions: *10
+    revisions: *11
   - !ruby/object:Idea
     title: Sleep
     description: Get enough sleep to disregard coffee idea
@@ -415,7 +426,7 @@ ideas:
     updated_at: 2013-10-22 17:29:17.000000000 -06:00
     rank: 1
     tags: sleep, rest, restful, productivity
-    revisions: *10
+    revisions: *11
   - !ruby/object:Idea
     title: Sleep
     description: '    Get enough sleep to disregard coffee idea  '
@@ -424,7 +435,7 @@ ideas:
     updated_at: 2013-10-23 13:40:45.000000000 -06:00
     rank: 1
     tags: '    sleep, rest, restful, productivity  '
-    revisions: *10
+    revisions: *11
   - !ruby/object:Idea
     title: Sleep
     description: 'Get enough sleep to disregard coffee idea    '
@@ -433,7 +444,7 @@ ideas:
     updated_at: 2013-10-23 20:52:17.000000000 -06:00
     rank: 1
     tags: 'sleep, rest, restful, productivity    '
-    revisions: *10
+    revisions: *11
   - !ruby/object:Idea
     title: Sleep
     description: 'Get enough sleep to disregard coffee idea '
@@ -442,7 +453,7 @@ ideas:
     updated_at: 2013-10-23 20:54:23.000000000 -06:00
     rank: 1
     tags: 'sleep, rest, restful '
-    revisions: *10
+    revisions: *11
   - !ruby/object:Idea
     title: Sleep
     description: 'Get enough sleep to disregard coffee idea  '
@@ -451,7 +462,7 @@ ideas:
     updated_at: 2013-10-23 20:54:43.000000000 -06:00
     rank: 1
     tags: 'sleep, rest   '
-    revisions: *10
+    revisions: *11
   - !ruby/object:Idea
     title: Sleep
     description: 'Get enough sleep to disregard coffee idea    '
@@ -460,7 +471,7 @@ ideas:
     updated_at: 2013-10-23 20:54:57.000000000 -06:00
     rank: 1
     tags: sleep
-    revisions: *10
+    revisions: *11
   - !ruby/object:Idea
     title: Sleep
     description: 'Get enough sleep to disregard coffee idea    '
@@ -469,7 +480,7 @@ ideas:
     updated_at: 2013-10-23 20:55:11.000000000 -06:00
     rank: 1
     tags: '  '
-    revisions: *10
+    revisions: *11
 - title: Winner, winner
   id: 13
   description: winner, winner, chicken dinner
@@ -478,7 +489,7 @@ ideas:
   - gettin' huge
   created_at: 2013-10-22 17:28:56.000000000 -06:00
   updated_at: 2013-10-23 22:49:59.000000000 -06:00
-  revisions: &11
+  revisions: &12
   - !ruby/object:Idea
     title: Winner
     description: winner, winner, chicken dinner
@@ -487,7 +498,7 @@ ideas:
     updated_at: 2013-10-22 17:28:56.000000000 -06:00
     rank: 0
     tags: winner, chicken dinner
-    revisions: *11
+    revisions: *12
   - !ruby/object:Idea
     title: Winner, winner
     description: winner, winner, chicken dinner
@@ -496,7 +507,7 @@ ideas:
     updated_at: 2013-10-22 18:05:30.000000000 -06:00
     rank: 0
     tags: winner, chicken dinner
-    revisions: *11
+    revisions: *12
 - title: Edit HTML
   id: 14
   description: 'Make the Margins line up  '
@@ -504,7 +515,7 @@ ideas:
   tags: html, margin
   created_at: 2013-10-23 18:45:31.000000000 -06:00
   updated_at: 2013-10-23 21:56:22.000000000 -06:00
-  revisions: &12
+  revisions: &13
   - !ruby/object:Idea
     title: Edit HTML
     description: Make the Margins line up
@@ -513,7 +524,7 @@ ideas:
     updated_at: 2013-10-23 18:45:31.000000000 -06:00
     rank: 0
     tags: html, margin
-    revisions: *12
+    revisions: *13
 - title: New
   id: 15
   description: Idea

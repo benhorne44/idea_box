@@ -198,6 +198,7 @@ class IdeaStoreTest < Minitest::Test
   end
 
   def test_it_can_sort_by_date_created
+    time = Time.now
     idea1 = IdeaStore.create("title"       => "Heyo Partner",
                      "description" => "Only two things are infinite,
                                        the universe and human stupidity,
@@ -207,9 +208,9 @@ class IdeaStoreTest < Minitest::Test
                      "description" => "Only two things are infinite,
                                        the universe and human stupidity,
                                        and I'm not sure about the former.",
-                     "created_at"  => "#{Time.now}")
-    results = IdeaStore.sort_by_created_at_date.map {|idea| idea.title}
-    assert_equal ["Howdy Howdy", "Howdy", "Hello", "Heyo Partner"], results
+                     "created_at"  => "#{time}")
+    results = IdeaStore.sort_by_created_at_date.map { |idea| idea.first}
+    assert_equal ["#{time}", "2013-10-19 12:04:25 -0600'", "2013-10-19 01:12:25 -0600'", "2013-10-17 17:47:51.000000000 -06:00"], results
   end
 
   def test_it_can_sort_by_tag_count
