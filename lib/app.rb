@@ -101,6 +101,12 @@ class IdeaBoxApp < Sinatra::Base
     erb :"idea/existing_ideas", :locals => {ideas: IdeaStore.all.sort}
   end
 
+  get '/groups/:group' do
+    filtered = IdeaFilter.new(params[:group])
+    ideas = filtered.by_group
+    erb :groups, :locals => {ideas: ideas, group: params[:group]}
+  end
+
   not_found do
     default_message = ''
     erb :error, :locals => {message: default_message}
@@ -114,6 +120,10 @@ class IdeaBoxApp < Sinatra::Base
 
     def all_idea_tags
       IdeaStore.all_tags_for_ideas.sort_by { |tag| tag.downcase }
+    end
+
+    def all_idea_groups
+      IdeaStore.all_by_group.keys
     end
 
   end

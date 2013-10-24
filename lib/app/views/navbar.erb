@@ -39,6 +39,24 @@
 
               </li>
 
+              <li class="dropdown">
+
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes"><font size ='4'>Groups</font><span class="caret"></span></a>
+              
+                <ul class="dropdown-menu" aria-labelledby="themes">
+
+                  <li><a class="hc" href="/groups/all">All</a></form></li>
+
+                  <% all_idea_groups.each do |group| %>
+
+                    <li><a class="hc" href="/groups/<%= group %>"><%= group %></a></li>
+
+                  <% end %>
+
+                </ul>
+
+              </li>
+
             </ul>
 
             <ul>

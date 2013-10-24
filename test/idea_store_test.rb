@@ -248,4 +248,15 @@ class IdeaStoreTest < Minitest::Test
     assert_equal Idea, IdeaStore.all.first.class
   end
 
+  def test_it_can_find_ideas_by_group
+    idea = IdeaStore.create("title"  => "Pink Ranger",
+                            "group"  => "Power Rangers")
+    idea2 = IdeaStore.create("title" => "Green Ranger",
+                            "group"  => "Power Rangers")
+    results = IdeaStore.all_by_group["Power Rangers"]
+    assert_equal 2, results.count
+    assert_equal "Pink Ranger", results.first.title
+    assert_equal "Green Ranger", results.last.title
+  end
+
 end

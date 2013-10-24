@@ -111,4 +111,8 @@ class IdeaStore
       all.sort_by {|idea| idea.tags.count}.reverse
     end
 
+    def self.all_by_group
+      all.group_by {|idea| idea.group}
+    end
+
 end

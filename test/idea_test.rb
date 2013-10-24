@@ -129,4 +129,14 @@ class IdeaTest < Minitest::Test
     idea.dislike!
     assert_equal 0, idea.rank
   end
+
+  def test_it_has_a_default_group
+    idea = Idea.new
+    assert_equal "default", idea.group
+  end
+
+  def test_it_can_accept_group
+    idea = Idea.new("group" => "power rangers")
+    assert_equal "power rangers", idea.group
+  end
 end

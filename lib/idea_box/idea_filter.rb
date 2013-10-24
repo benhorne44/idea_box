@@ -30,4 +30,12 @@ class IdeaFilter
       end
     end
 
+    def by_group
+      if sort_by == 'all'
+        IdeaStore.all
+      else
+        IdeaStore.all_by_group[sort_by]
+      end
+    end
+
   end

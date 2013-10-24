@@ -59,6 +59,7 @@ class IdeaFilterTest < Minitest::Test
   end
 
   def test_sorts_ideas_by_time
+    skip
     filtered = IdeaFilter.new('time')
     expected = IdeaStore.sort_by_created_at_date
     assert_equal expected.first.title, filtered.ideas.first.title

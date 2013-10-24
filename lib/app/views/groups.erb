@@ -1,0 +1,18 @@
+<% if group == 'all' %>
+
+  <legend>
+    <h3>Existing ideas:</h3>
+  </legend>
+
+<% else %>
+
+  <legend>
+    <h3>Existing ideas for <em><%= group %></em>:</h3>
+  </legend> 
+
+<% end %>
+
+<% ideas.each do |idea| %>
+  <%= erb :"idea/idea", locals: {idea: idea} %>
+<% end %> 
+
