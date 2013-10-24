@@ -12,10 +12,6 @@ class Idea
     @id = attributes["id"]
   end
 
-  # def save
-  #   IdeaStore.create(data_hash)
-  # end
-
   def data_hash
     {
       "title" => title,

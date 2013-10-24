@@ -281,11 +281,13 @@ ideas:
   revisions: []
 - title: brew coffee
   id: 8
-  description: 'Brew coffee to get the project done!    '
+  description: Brew coffee to get the project done!
   rank: 6
-  tags: coffee, caffeine
+  tags:
+  - caffeine
+  - coffee
   created_at: 2013-02-20 16:26:46.000000000 -07:00
-  updated_at: 2013-10-23 21:06:39.000000000 -06:00
+  updated_at: 2013-10-24 09:14:35.000000000 -06:00
   revisions: &7
   - !ruby/object:Idea
     title: drink coffee
@@ -322,6 +324,17 @@ ideas:
     updated_at: 2013-10-23 20:55:59.000000000 -06:00
     rank: 6
     tags: 'coffee, caffeine, coffee  '
+    revisions: *7
+  - !ruby/object:Idea
+    title: brew coffee
+    description: Brew coffee to get the project done!
+    id: 8
+    created_at: 2013-02-20 16:26:46.000000000 -07:00
+    updated_at: 2013-10-23 21:06:39.000000000 -06:00
+    rank: 6
+    tags:
+    - caffeine
+    - coffee
     revisions: *7
 - title: gym
   id: 9

@@ -58,7 +58,7 @@ class IdeaStore
       all.select do |idea|
         (idea.title =~ /#{phrase}/i) ||
         (idea.description =~ /#{phrase}/i) ||
-        (idea.data_hash["tags"] =~ /#{phrase}/i)
+        (idea.tag_string =~ /#{phrase}/i)
       end
     end
 

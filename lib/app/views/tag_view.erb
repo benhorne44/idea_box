@@ -1,6 +1,6 @@
 <% if tag_value == 'all'%>
   
-  <h3>Your Ideas By <em>Tag</em>:</h3>
+  <h3>Your ideas by <em>Tag</em>:</h3>
 
   <% ideas_for_tags.each do |tag, ideas| %>
 
@@ -22,13 +22,13 @@
 
   <% elsif ideas_for_tags[tag_value].count == 1 %>
 
-    <h3>Your Idea For '<em><%= tag_value %></em>':</h3><br>
+    <h3>Your idea for '<em><%= tag_value %></em>':</h3><br>
 
     <%= erb :"idea/idea", locals: {idea: ideas_for_tags[tag_value].first}%>
 
   <% else %>
 
-  <h3>Your Ideas For '<em><%= tag_value %></em>':</h3><br>
+  <h3>Your ideas for '<em><%= tag_value %></em>':</h3><br>
 
     <% ideas_for_tags[tag_value].each do |idea| %> 
       <%= erb :"idea/idea", locals: {idea: idea}%>

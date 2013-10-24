@@ -71,7 +71,6 @@ class IdeaBoxApp < Sinatra::Base
       (hour =~ /#{params[:time_value]}/)
     end
     time_value = params[:time_value]
-    ideas = IdeaStore.find_by_time(params[:time_value])
     erb :"idea/ideas_for_times", :locals => {stats: stats,
                                              ideas_for_time: ideas_for_time,
                                              time_value: time_value}
@@ -79,7 +78,6 @@ class IdeaBoxApp < Sinatra::Base
 
   get '/statistics' do
     stats = IdeaStatistics.new
-    sorted_ideas = IdeaStore.all.sort_by {|idea| idea.created_at}
     erb :"/statistics/statistics", :locals => {stats: stats}
   end
 
