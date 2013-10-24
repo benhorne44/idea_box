@@ -4,8 +4,8 @@ class Idea
   attr_accessor :updated_at, :revisions, :tags
 
   def initialize(attributes = {})
-    @title       = attributes["title"]
-    @description = attributes["description"]
+    @title       = attributes["title"].to_s.strip
+    @description = attributes["description"].to_s.strip
     @id          = attributes["id"]
     @created_at  = attributes["created_at"] ||= Time.now
     @updated_at  = attributes["updated_at"] ||= Time.now
@@ -27,12 +27,28 @@ class Idea
     }
   end
 
+  def tags
+    if @tags.class == Array
+      @tags.sort.uniq
+    else
+      @tags.strip.split(', ').sort.uniq
+    end
+  end
+
+  def tag_string
+    tags.join(', ')
+  end
+
   def time_parse
     Time.parse(created_at.to_s).rfc2822
   end
 
   def like!
     @rank += 1
+  end
+
+  def dislike!
+    @rank -= 1
   end
 
   def <=>(other)

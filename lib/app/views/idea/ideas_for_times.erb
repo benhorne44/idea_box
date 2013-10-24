@@ -1,0 +1,70 @@
+<% if time_value == 'all' %>
+
+  <h2>Statistics by <em>time of day</em>:</h2>
+
+    <legend></legend>
+
+    <% stats.by_hour.each do |time_value, ideas| %>
+
+      <a style='margin-bottom: 5px' href='/statistics/times/<%= time_value %>'><h3>
+        <%= time_value %>:00-<%= time_value %>:59
+        <span  class="badge"><%= ideas.count %></span></h3>
+      </a>
+
+      <% if ideas.count == 0 %>
+
+        <ul class="list-group">
+
+          <li class="list-group-item">
+
+            <em>There are currently no ideas for this hour.</em>
+
+            <a style="float: right; display: inline" href="/existing_ideas">
+              View All Existing Ideas »
+            </a>
+
+            <br>
+
+          </li>
+
+      <% else %>  
+      
+        <% ideas.each do |idea| %>
+
+        <ul class="list-group">
+          <li class="list-group-item">
+
+            <%= idea.title %>
+            <a style="float: right; display: inline" href="/<%= idea.id %>/details">Idea Details »</a>
+            <br>
+          </li>
+        <% end %>
+
+      <% end %>
+
+    <% end %>
+
+    </ul>
+
+    <% end %>
+<% else %>
+
+  <% ideas_for_time.each do |time_value, ideas| %>
+
+    <h3>Ideas For <em>'<%= time_value %>:00-<%= time_value %>:59'</em>: </h3>
+
+    <legend></legend>
+
+    <% if ideas.count == 0 %>
+
+      <h5><em>There are currently no ideas for '<%= time_value %>'</em></h5>
+
+    <% else %>  
+
+      <% ideas.each do |idea| %>
+        <%= erb :"idea/idea", :locals => {idea: idea} %>
+      <% end %>
+
+  <% end %>
+
+<% end %>

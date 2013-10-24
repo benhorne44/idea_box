@@ -4,26 +4,70 @@ ideas:
   id: 0
   description: fill the database with ideas
   rank: 0
-  tags: data, idea, mapper
+  tags:
+  - data
+  - idea
+  - mapper
   created_at: 2013-05-02 17:26:14.000000000 -06:00
-  updated_at: 2013-10-22 18:16:35.000000000 -06:00
+  updated_at: 2013-10-23 22:32:51.000000000 -06:00
   revisions: &1
+  - !ruby/object:Idea
+    title: New Idea
+    description: 'fill the database with ideas          '
+    id: 0
+    created_at: 2013-05-02 17:26:14.000000000 -06:00
+    updated_at: 2013-10-23 22:22:09.000000000 -06:00
+    rank: 0
+    tags:
+    - data
+    - idea
+    - idea
+    - 'mapper  '
+    revisions: *1
   - !ruby/object:Idea
     title: New Idea
     description: fill the database with ideas
     id: 0
     created_at: 2013-05-02 17:26:14.000000000 -06:00
-    updated_at: 2013-10-22 17:26:14.000000000 -06:00
+    updated_at: 2013-10-23 22:22:26.000000000 -06:00
     rank: 0
-    tags: data, idea
+    tags:
+    - data
+    - idea
+    - mapper
+    revisions: *1
+  - !ruby/object:Idea
+    title: New Idea
+    description: fill the database with ideas
+    id: 0
+    created_at: 2013-05-02 17:26:14.000000000 -06:00
+    updated_at: 2013-10-23 22:23:14.000000000 -06:00
+    rank: 0
+    tags:
+    - data
+    - idea
+    - idea
+    - mapper
+    revisions: *1
+  - !ruby/object:Idea
+    title: New Idea
+    description: fill the database with ideas
+    id: 0
+    created_at: 2013-05-02 17:26:14.000000000 -06:00
+    updated_at: 2013-10-23 22:32:31.000000000 -06:00
+    rank: 0
+    tags:
+    - data
+    - idea
+    - mapper
     revisions: *1
 - title: drink coffee
   id: 1
   description: Drink enough coffee to get the project done!
-  rank: 5
-  tags: coffee, mug, french press
+  rank: 7
+  tags: coffee, mug, french press, ground
   created_at: 2013-10-11 17:26:46.000000000 -06:00
-  updated_at: 2013-10-22 18:15:24.000000000 -06:00
+  updated_at: 2013-10-23 20:49:21.000000000 -06:00
   revisions: &2
   - !ruby/object:Idea
     title: drink coffee
@@ -43,13 +87,25 @@ ideas:
     rank: 5
     tags: coffee
     revisions: *2
+  - !ruby/object:Idea
+    title: drink coffee
+    description: Drink enough coffee to get the project done!
+    id: 1
+    created_at: 2013-10-11 17:26:46.000000000 -06:00
+    updated_at: 2013-10-22 18:15:24.000000000 -06:00
+    rank: 7
+    tags: coffee, mug, french press
+    revisions: *2
 - title: gym
   id: 2
-  description: "Go to the gym, NOW!\r\n  \r\n  \r\n  "
+  description: Go to the gym, NOW!
   rank: 2
-  tags: "gym, gettin' huge\r\n  \r\n  \r\n  "
+  tags:
+  - gettin' huge
+  - gym
+  - horrible
   created_at: 2013-07-16 17:27:07.000000000 -06:00
-  updated_at: 2013-10-23 16:24:35.000000000 -06:00
+  updated_at: 2013-10-23 22:33:16.000000000 -06:00
   revisions: &3
   - !ruby/object:Idea
     title: gym
@@ -62,21 +118,30 @@ ideas:
     revisions: *3
   - !ruby/object:Idea
     title: gym
-    description: "Go to the gym, NOW!\r\n  "
+    description: 'Go to the gym, NOW!  '
     id: 2
     created_at: 2013-07-16 17:27:07.000000000 -06:00
     updated_at: 2013-10-23 16:21:23.000000000 -06:00
     rank: 2
-    tags: "    gym, gettin' huge\r\n  "
+    tags: '    gym, gettin'' huge  '
     revisions: *3
   - !ruby/object:Idea
     title: gym
-    description: "Go to the gym, NOW!\r\n  \r\n  "
+    description: 'Go to the gym, NOW!    '
     id: 2
     created_at: 2013-07-16 17:27:07.000000000 -06:00
     updated_at: 2013-10-23 16:23:30.000000000 -06:00
     rank: 2
-    tags: "    gym, gettin' huge\r\n  \r\n  "
+    tags: '    gym, gettin'' huge    '
+    revisions: *3
+  - !ruby/object:Idea
+    title: gym
+    description: Go to the gym, NOW!
+    id: 2
+    created_at: 2013-07-16 17:27:07.000000000 -06:00
+    updated_at: 2013-10-23 16:24:35.000000000 -06:00
+    rank: 2
+    tags: 'gym, gettin'' huge '
     revisions: *3
 - title: best idea ever
   id: 3
@@ -131,11 +196,11 @@ ideas:
     revisions: *4
 - title: Winner
   id: 6
-  description: "winner, winner, chicken dinner\r\n  \r\n  "
-  rank: 0
-  tags: "winner, chicken dinner\r\n  \r\n  "
+  description: winner, winner, chicken dinner
+  rank: 1
+  tags: winner, YEAH, I win
   created_at: 2013-10-22 17:28:56.000000000 -06:00
-  updated_at: 2013-10-23 16:25:38.000000000 -06:00
+  updated_at: 2013-10-23 21:09:49.000000000 -06:00
   revisions: &5
   - !ruby/object:Idea
     title: Winner
@@ -148,12 +213,39 @@ ideas:
     revisions: *5
   - !ruby/object:Idea
     title: Winner
-    description: "winner, winner, chicken dinner\r\n  "
+    description: 'winner, winner, chicken dinner  '
     id: 6
     created_at: 2013-10-22 17:28:56.000000000 -06:00
     updated_at: 2013-10-23 16:24:45.000000000 -06:00
     rank: 0
-    tags: "winner, chicken dinner\r\n  "
+    tags: 'winner, chicken dinner  '
+    revisions: *5
+  - !ruby/object:Idea
+    title: Winner
+    description: winner, winner, chicken dinner
+    id: 6
+    created_at: 2013-10-22 17:28:56.000000000 -06:00
+    updated_at: 2013-10-23 16:25:38.000000000 -06:00
+    rank: 0
+    tags: 'winner, chicken dinner    '
+    revisions: *5
+  - !ruby/object:Idea
+    title: Winner
+    description: 'winner, winner, chicken dinner  '
+    id: 6
+    created_at: 2013-10-22 17:28:56.000000000 -06:00
+    updated_at: 2013-10-23 21:03:23.000000000 -06:00
+    rank: 0
+    tags: winner
+    revisions: *5
+  - !ruby/object:Idea
+    title: Winner
+    description: 'winner, winner, chicken dinner    '
+    id: 6
+    created_at: 2013-10-22 17:28:56.000000000 -06:00
+    updated_at: 2013-10-23 21:03:44.000000000 -06:00
+    rank: 0
+    tags: winner
     revisions: *5
 - title: New Idea
   id: 7
@@ -165,11 +257,11 @@ ideas:
   revisions: []
 - title: brew coffee
   id: 8
-  description: Brew coffee to get the project done!
+  description: 'Brew coffee to get the project done!    '
   rank: 6
-  tags: coffee, caffiene
+  tags: coffee, caffeine
   created_at: 2013-02-20 16:26:46.000000000 -07:00
-  updated_at: 2013-10-22 17:59:09.000000000 -06:00
+  updated_at: 2013-10-23 21:06:39.000000000 -06:00
   revisions: &6
   - !ruby/object:Idea
     title: drink coffee
@@ -188,6 +280,24 @@ ideas:
     updated_at: 2013-10-22 17:57:31.000000000 -06:00
     rank: 4
     tags: coffee, caffiene
+    revisions: *6
+  - !ruby/object:Idea
+    title: brew coffee
+    description: Brew coffee to get the project done!
+    id: 8
+    created_at: 2013-02-20 16:26:46.000000000 -07:00
+    updated_at: 2013-10-22 17:59:09.000000000 -06:00
+    rank: 6
+    tags: coffee, caffiene
+    revisions: *6
+  - !ruby/object:Idea
+    title: brew coffee
+    description: 'Brew coffee to get the project done!  '
+    id: 8
+    created_at: 2013-02-20 16:26:46.000000000 -07:00
+    updated_at: 2013-10-23 20:55:59.000000000 -06:00
+    rank: 6
+    tags: 'coffee, caffeine, coffee  '
     revisions: *6
 - title: gym
   id: 9
@@ -269,11 +379,11 @@ ideas:
     revisions: *9
 - title: Sleep
   id: 12
-  description: "    Get enough sleep to disregard coffee idea\r\n  "
+  description: 'Get enough sleep to disregard coffee idea      '
   rank: 1
-  tags: "    sleep, rest, restful, productivity\r\n  "
+  tags: ''
   created_at: 2013-10-22 17:28:22.000000000 -06:00
-  updated_at: 2013-10-23 13:40:45.000000000 -06:00
+  updated_at: 2013-10-23 21:06:08.000000000 -06:00
   revisions: &10
   - !ruby/object:Idea
     title: Sleep
@@ -293,13 +403,68 @@ ideas:
     rank: 1
     tags: sleep, rest, restful, productivity
     revisions: *10
+  - !ruby/object:Idea
+    title: Sleep
+    description: '    Get enough sleep to disregard coffee idea  '
+    id: 12
+    created_at: 2013-10-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-23 13:40:45.000000000 -06:00
+    rank: 1
+    tags: '    sleep, rest, restful, productivity  '
+    revisions: *10
+  - !ruby/object:Idea
+    title: Sleep
+    description: 'Get enough sleep to disregard coffee idea    '
+    id: 12
+    created_at: 2013-10-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-23 20:52:17.000000000 -06:00
+    rank: 1
+    tags: 'sleep, rest, restful, productivity    '
+    revisions: *10
+  - !ruby/object:Idea
+    title: Sleep
+    description: 'Get enough sleep to disregard coffee idea '
+    id: 12
+    created_at: 2013-10-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-23 20:54:23.000000000 -06:00
+    rank: 1
+    tags: 'sleep, rest, restful '
+    revisions: *10
+  - !ruby/object:Idea
+    title: Sleep
+    description: 'Get enough sleep to disregard coffee idea  '
+    id: 12
+    created_at: 2013-10-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-23 20:54:43.000000000 -06:00
+    rank: 1
+    tags: 'sleep, rest   '
+    revisions: *10
+  - !ruby/object:Idea
+    title: Sleep
+    description: 'Get enough sleep to disregard coffee idea    '
+    id: 12
+    created_at: 2013-10-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-23 20:54:57.000000000 -06:00
+    rank: 1
+    tags: sleep
+    revisions: *10
+  - !ruby/object:Idea
+    title: Sleep
+    description: 'Get enough sleep to disregard coffee idea    '
+    id: 12
+    created_at: 2013-10-22 17:28:22.000000000 -06:00
+    updated_at: 2013-10-23 20:55:11.000000000 -06:00
+    rank: 1
+    tags: '  '
+    revisions: *10
 - title: Winner, winner
   id: 13
   description: winner, winner, chicken dinner
-  rank: 0
-  tags: winner, chicken dinner
+  rank: 2
+  tags:
+  - gettin' huge
   created_at: 2013-10-22 17:28:56.000000000 -06:00
-  updated_at: 2013-10-22 18:05:30.000000000 -06:00
+  updated_at: 2013-10-23 22:49:59.000000000 -06:00
   revisions: &11
   - !ruby/object:Idea
     title: Winner
@@ -310,11 +475,37 @@ ideas:
     rank: 0
     tags: winner, chicken dinner
     revisions: *11
+  - !ruby/object:Idea
+    title: Winner, winner
+    description: winner, winner, chicken dinner
+    id: 13
+    created_at: 2013-10-22 17:28:56.000000000 -06:00
+    updated_at: 2013-10-22 18:05:30.000000000 -06:00
+    rank: 0
+    tags: winner, chicken dinner
+    revisions: *11
 - title: Edit HTML
   id: 14
-  description: Make the Margins line up
+  description: 'Make the Margins line up  '
   rank: 0
   tags: html, margin
   created_at: 2013-10-23 18:45:31.000000000 -06:00
-  updated_at: 2013-10-23 18:45:31.000000000 -06:00
+  updated_at: 2013-10-23 21:56:22.000000000 -06:00
+  revisions: &12
+  - !ruby/object:Idea
+    title: Edit HTML
+    description: Make the Margins line up
+    id: 14
+    created_at: 2013-10-23 18:45:31.000000000 -06:00
+    updated_at: 2013-10-23 18:45:31.000000000 -06:00
+    rank: 0
+    tags: html, margin
+    revisions: *12
+- title: New
+  id: 15
+  description: Idea
+  rank: 0
+  tags: []
+  created_at: 2013-10-23 22:34:17.000000000 -06:00
+  updated_at: 2013-10-23 22:34:17.000000000 -06:00
   revisions: []

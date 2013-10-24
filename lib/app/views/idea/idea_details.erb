@@ -1,0 +1,62 @@
+<div class="well">
+  
+  <h1><%= idea.title %>
+
+    <form action='/<%= idea.id %>/dislike' method='POST' style="float: right;">
+      <input type="submit" class="btn btn-danger btn-xs" value='⬇'/>
+    </form>
+
+    <form action='/<%= idea.id %>/like' method='POST' style="float: right;">
+      <input type="submit" class="btn btn-success btn-xs" value='⬆'/>
+    </form>
+
+  </h1>
+
+  <a href="/<%= idea.id %>/edit">Edit</a>
+
+  <legend></legend>
+
+  <h4>Description: <em><%= idea.description %></em></h4>
+
+  <h4>Score: <span class="badge"><%= idea.rank %></span></h4>
+
+  <h4>
+    Tags:
+
+    <% if idea.tags.empty? %>
+      <font size='3'><em>No Tags...</em></font>
+    <% end %>
+
+    <% idea.tags.each do |tag_value| %>
+
+
+      <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
+        <button class="btn btn-primary btn-xs" value='<%= tag_value %>'>
+          <%= tag_value %>
+        </button>
+      </form>
+
+    <% end %>
+  </h4>
+
+  <h4>Created On: <%= idea.created_at.strftime("%b %e, %Y at %l:%M %p") %></h4>
+
+  <h4>Last Updated On: <%= idea.updated_at.strftime("%b %e, %Y at %l:%M %p") %></h4>
+    
+</div>
+
+<div class="well">
+
+  <form action="/<%= idea.id %>" style="display: inline" method="POST">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" class="btn btn-link" value='Delete'>
+  </form>
+
+</div>
+
+<br>
+<br>
+
+<legend></legend>
+
+<%= erb :"idea/revisions", :locals => {idea: idea} %>

@@ -9,7 +9,7 @@ class IdeaStatistics
 
   def by_day
     hash = day_names.each_with_object({}) do |day, hash|
-      hash[day] = IdeaStore.all.select {|idea| (idea.time_parse =~ /#{day[0...3]}/)}
+      hash[day] = IdeaStore.all.select {|idea| (idea.time_parse =~ /#{day[0...3]}/i)}
     end
     hash
   end

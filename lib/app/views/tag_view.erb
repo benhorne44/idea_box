@@ -1,32 +1,37 @@
 <% if tag_value == 'all'%>
   
-  <h1>Your Ideas By Tag:</h1>
+  <h3>Your Ideas By <em>Tag</em>:</h3>
 
   <% ideas_for_tags.each do |tag, ideas| %>
 
-    <h3><a href="/tags/<%= tag %>"><%= tag %></a></h3>
+    <h3><%= tag %>:</h3>
   
     <% ideas.each do |idea| %>
-      <br>
-      <%= erb :idea, locals: {idea: idea}%>
+      <%= erb :"idea/idea", locals: {idea: idea}%>
     <% end %>
+
+    <legend></legend>
 
   <% end %>
 
 <% else%>
 
-  <% if ideas_for_tags[tag_value].count == 1 %>
+  <% if ideas_for_tags[tag_value].nil? %>
+
+    <%= erb :error, :locals => {message: 'There was an error in linking to your tag, please try the search bar  .'} %>
+
+  <% elsif ideas_for_tags[tag_value].count == 1 %>
 
     <h3>Your Idea For '<em><%= tag_value %></em>':</h3><br>
 
-    <%= erb :idea, locals: {idea: ideas_for_tags[tag_value].first}%>
+    <%= erb :"idea/idea", locals: {idea: ideas_for_tags[tag_value].first}%>
 
   <% else %>
 
   <h3>Your Ideas For '<em><%= tag_value %></em>':</h3><br>
 
     <% ideas_for_tags[tag_value].each do |idea| %> 
-      <%= erb :idea, locals: {idea: idea}%>
+      <%= erb :"idea/idea", locals: {idea: idea}%>
     <% end %>
 
   <% end %>

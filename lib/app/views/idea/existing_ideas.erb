@@ -1,0 +1,7 @@
+<legend>
+  <h3>Existing Ideas:</h3>
+</legend>
+
+<% ideas.each do |idea| %>
+  <%= erb :"idea/idea", locals: {idea: idea} %>
+<% end %>

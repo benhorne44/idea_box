@@ -82,9 +82,19 @@ class IdeaStoreTest < Minitest::Test
     IdeaStore.create("title" => "Howdy",
                      "description" => "Partner",
                      "tags" => "english")
-    assert_equal 2, IdeaStore.tag_hash["english"].count
-    assert_equal 1, IdeaStore.tag_hash["spanish"].count
-    assert_equal 2, IdeaStore.tag_hash["no tag"].count
+    assert_equal 2, IdeaStore.ideas_for_tags["english"].count
+    assert_equal 1, IdeaStore.ideas_for_tags["spanish"].count
+    assert_equal 2, IdeaStore.ideas_for_tags["no tag"].count
+  end
+
+  def test_it_does_not_duplicate_a_tag
+    IdeaStore.create("title" => "Hello",
+                     "description" => "World",
+                     "tags" => "english, english")
+    IdeaStore.create("title" => "Hello",
+                     "description" => "World",
+                     "tags" => "english")
+    assert_equal ["english", "no tag"], IdeaStore.all_tags_for_ideas
   end
 
   def test_it_can_recognize_multiple_tags
@@ -94,10 +104,10 @@ class IdeaStoreTest < Minitest::Test
     IdeaStore.create("title" => "Hello",
                      "description" => "World",
                      "tags" => "english")
-    assert_equal 1, IdeaStore.tag_hash["normal"].count
-    assert_equal 2, IdeaStore.tag_hash["english"].count
-    assert_equal 1, IdeaStore.tag_hash["hello"].count
-    assert_equal 2, IdeaStore.tag_hash["no tag"].count
+    assert_equal 1, IdeaStore.ideas_for_tags["normal"].count
+    assert_equal 2, IdeaStore.ideas_for_tags["english"].count
+    assert_equal 1, IdeaStore.ideas_for_tags["hello"].count
+    assert_equal 2, IdeaStore.ideas_for_tags["no tag"].count
   end
 
   def test_it_can_find_by_day_of_the_week
@@ -183,8 +193,8 @@ class IdeaStoreTest < Minitest::Test
                      "rank"        => 0,
                      "tags"        => "no tag",
                      "created_at"  => '2013-10-17 17:47:51.000000000 -06:00')
-    results = IdeaStore.sort_by_title.map {|idea| idea.title }
-    assert_equal ["Hello", "Heyo Partner", "Howdy"], results
+    results = IdeaStore.sort_by_title.map { |idea| idea.first }
+    assert_equal ["hello", "heyo partner", "howdy"], results
   end
 
   def test_it_can_sort_by_tag_count
@@ -205,21 +215,21 @@ class IdeaStoreTest < Minitest::Test
     assert_equal 0, idea.revisions.count
     IdeaStore.update(idea.id.to_i, {"title" => "Heyo", "description" => "wookie"})
     assert_equal "Heyo", IdeaStore.find(idea.id.to_i).title
-    assert_equal "Hello", IdeaStore.revisions(idea.id.to_i).first.title
-    assert_equal 1, IdeaStore.revisions(idea.id.to_i).count
+    assert_equal "Hello", IdeaStore.find(idea.id.to_i).revisions.first.title
+    assert_equal 1, IdeaStore.find(idea.id.to_i).revisions.count
     IdeaStore.update(idea.id.to_i, {"title" => "Howdy", "description" => "jawa"})
-    assert_equal 2, IdeaStore.revisions(idea.id.to_i).count
+    assert_equal 2, IdeaStore.find(idea.id.to_i).revisions.count
     assert_equal "Howdy", IdeaStore.find(idea.id.to_i).title
     assert_equal "jawa", IdeaStore.find(idea.id.to_i).description
-    assert_equal "Hello", IdeaStore.revisions(idea.id.to_i).first.title
-    assert_equal "World", IdeaStore.revisions(idea.id.to_i).first.description
-    assert_equal "Heyo", IdeaStore.revisions(idea.id.to_i).last.title
-    assert_equal "wookie", IdeaStore.revisions(idea.id.to_i).last.description
+    assert_equal "Hello", IdeaStore.find(idea.id.to_i).revisions.first.title
+    assert_equal "World", IdeaStore.find(idea.id.to_i).revisions.first.description
+    assert_equal "Heyo", IdeaStore.find(idea.id.to_i).revisions.last.title
+    assert_equal "wookie", IdeaStore.find(idea.id.to_i).revisions.last.description
   end
 
-  # def test_all_produces_an_array_of_ideas
-  #   assert_equal Array, IdeaStore.all.class
-  #   assert_equal Array, IdeaStore.all.first.class
-  # end
+  def test_all_produces_an_array_of_ideas
+    assert_equal Array, IdeaStore.all.class
+    assert_equal Idea, IdeaStore.all.first.class
+  end
 
 end

@@ -2,24 +2,29 @@
 
   <h3>Please enter a keyword or phrase for your search.</h3>
 
+
 <% else %>
 
   <% if search_ideas.count == 0 %>
-      <h3>There are no results for your search '<em><%= search %></em>'</h3><br>
+
+      <h3>There are no results for your search '<em><%= search %></em>'</h3>
+      <h4>Please try again, or view all <a href="/existing_ideas">existing ideas</a>.</h4>
+      <br>
+
   <% elsif search_ideas %>
 
     <% if search_ideas.count == 1 %>
 
       <h3>Result for the search '<em><%= search %></em>':</h3><br>
       
-      <%= erb :idea, locals: {idea: search_ideas.first} %>
+      <%= erb :"idea/idea", locals: {idea: search_ideas.first} %>
 
     <% else %>
 
       <h3>Results for the search '<em><%= search %></em>':</h3><br>
       
       <% search_ideas.each do |idea| %>
-        <%= erb :idea, locals: {idea: idea} %>
+        <%= erb :"idea/idea", locals: {idea: idea} %>
       <% end %>
 
     <% end %>

@@ -30,10 +30,10 @@
                 <ul class="dropdown-menu" aria-labelledby="themes">
 
                   <li><a class="hc" href="/sort/title">Sort By Title</a></form></li>
-                  <li><a class="hc" href="/sort/day">Sort By Day</a></li>
+                  <li><a class="hc" href="/statistics/days/all">Sort By Day</a></li>
                   <li><a class="hc" href="/sort/time">Sort By Date Created</a></li>
-                  <li><a class="hc" href="/sort/tag">Sort By Tag Count</a></li>
-                  <li><a class="hc" href="/sort/tag">View All By Tag</a></li>
+                  <li><a class="hc" href="/sort/tag_count">Sort By Tag Count</a></li>
+                  <li><a class="hc" href="/tags/all">View All By Tag</a></li>
 
                 </ul>
 
@@ -74,7 +74,7 @@
       </div>
 
       <div class="modal-body">
-        <%= erb :new_idea, locals: {idea: new_idea} %>
+        <%= erb :"idea/new_idea", locals: {idea: new_idea} %>
       </div>
 
     </div>

@@ -46,9 +46,31 @@ class IdeaStore
       Idea.new(raw_idea_for_id(id).merge("id" => id))
     end
 
+    def self.find_by_day(day)
+      all.select {|idea| (idea.time_parse =~ /#{day}/i)}
+    end
+
+    def self.find_by_time(time)
+      all.select {|idea| (idea.time_parse =~ / #{time}:/)}
+    end
+
+    def self.search(phrase)
+      all.select do |idea|
+        (idea.title =~ /#{phrase}/i) ||
+        (idea.description =~ /#{phrase}/i) ||
+        (idea.data_hash["tags"] =~ /#{phrase}/i)
+      end
+    end
+
     def self.update_like(id, new_data)
       old_idea = find(id)
       old_idea.like!
+      database.transaction {database["ideas"][id] = old_idea.data_hash}
+    end
+
+    def self.update_dislike(id, new_data)
+      old_idea = find(id)
+      old_idea.dislike!
       database.transaction {database["ideas"][id] = old_idea.data_hash}
     end
 
@@ -64,42 +86,11 @@ class IdeaStore
     end
 
     def self.all_tags_for_ideas
-      all.collect {|idea| idea.tags.split(', ')}.flatten.uniq
-    end
-
-    def self.find_by_day(day)
-      all.select {|idea| (idea.time_parse =~ /#{day}/)}
+      all.collect {|idea| idea.tags}.flatten.uniq.sort
     end
 
     def self.day_values
       ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    end
-
-    def self.day_names
-      ['Monday', 'Tuesday', 'Wednesday', 'Thursday',
-       'Friday', 'Saturday', 'Sunday']
-    end
-
-    def self.ideas_grouped_by_day
-      all.group_by {|idea| idea.created_at.strftime("%A")}
-    end
-
-    def self.time_values
-      ['00', '01', '02', '03', '04', '05', '06', '07',
-       '08', '09', '10', '11', '12', '13', '14', '15',
-       '16', '17', '18', '19', '20', '21', '22', '23']
-    end
-
-    def self.find_by_time(time)
-      all.select {|idea| (idea.time_parse =~ / #{time}:/)}
-    end
-
-    def self.search(phrase)
-      all.select do |idea|
-        (idea.title =~ /#{phrase}/i) ||
-        (idea.description =~ /#{phrase}/i) ||
-        (idea.data_hash["tags"] =~ /#{phrase}/i)
-      end
     end
 
     def self.sort_by_created_at_date
@@ -111,15 +102,12 @@ class IdeaStore
     end
 
     def self.sort_by_title
-      all.sort_by {|idea| idea.title.downcase}
+      grouped = all.group_by {|idea| idea.title.downcase}
+      grouped.sort_by {|title,ideas| title}
     end
 
     def self.sort_by_tag_count
-      all.sort_by {|idea| idea.tags.split(', ').count}.reverse
-    end
-
-    def self.revisions(id)
-      find(id).revisions
+      all.sort_by {|idea| idea.tags.count}.reverse
     end
 
 end

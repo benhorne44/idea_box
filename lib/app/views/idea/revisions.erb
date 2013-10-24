@@ -24,7 +24,7 @@
 
     <h5>Tags: 
 
-      <% revision.tags.split(', ').each do |tag_value| %>
+      <% revision.tags.each do |tag_value| %>
 
       <form method="get" style="display: inline" action="/tags/<%= tag_value %>">
         <button class="btn btn-primary disabled btn-xs" value='<%= tag_value %>'>

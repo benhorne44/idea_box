@@ -1,4 +1,3 @@
-ENV['RACK_ENV'] = 'test'
 require 'minitest'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -38,18 +37,40 @@ class IdeaTest < Minitest::Test
     assert_equal 1, idea.<=>(bad_idea)
   end
 
-  def test_it_can_sort_by_rank
-
-  end
-
   def test_an_idea_has_a_tag_by_default
     idea = Idea.new
-    assert_equal "no tag", idea.tags
+    assert_equal ["no tag"], idea.tags
+  end
+
+  def test_an_idea_can_have_multiple_tags
+    idea = Idea.new("tags" => "idea1, idea2, idea3")
+    assert_equal ["idea1", "idea2", "idea3"], idea.tags
   end
 
   def test_it_can_add_a_tag
     idea = Idea.new("tags" => "idea")
-    assert_equal "idea", idea.tags
+    assert_equal ["idea"], idea.tags
+  end
+
+  def test_it_removes_all_extra_white_space
+    idea = Idea.new("tags" => "idea\r\n  ")
+    assert_equal "idea", idea.tag_string
+    idea = Idea.new("title" => "idea\r\n  ")
+    assert_equal "idea", idea.title
+    idea = Idea.new("description" => "idea\r\n  ")
+    assert_equal "idea", idea.description
+  end
+
+  def test_it_has_a_tag_string
+    idea = Idea.new("tags" => "idea1, idea2, idea3, idea2")
+    assert_equal "idea1, idea2, idea3", idea.tag_string
+  end
+
+  def test_it_does_not_duplicate_a_tag
+    idea = Idea.new("title" => "Hello",
+                     "description" => "World",
+                     "tags" => "english, english")
+    assert_equal ["english"], idea.tags
   end
 
   def test_it_can_have_a_created_at_value
@@ -98,5 +119,14 @@ class IdeaTest < Minitest::Test
     assert_equal "lunch", result.title
     assert_equal "beef BBQ", result.description
     refute_equal '2013-10-17 16:42:53 -0600', result.updated_at
+  end
+
+  def test_dislike_method_lowers_rank
+    idea = Idea.new
+    assert_equal 0, idea.rank
+    idea.like!
+    assert_equal 1, idea.rank
+    idea.dislike!
+    assert_equal 0, idea.rank
   end
 end

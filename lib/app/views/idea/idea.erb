@@ -1,0 +1,45 @@
+<div class="col-lg-4">
+  <div class="well">
+
+    <form action='/<%= idea.id %>/dislike' method='POST' style="float: right;">
+      <input type="submit" class="btn btn-danger btn-xs" value='⬇'/>
+    </form>
+
+    <form action='/<%= idea.id %>/like' method='POST' style="float: right;">
+      <input type="submit" class="btn btn-success btn-xs" value='⬆'/>
+    </form>
+      
+    <h3>
+      <em><%= idea.title %></em>
+    </h3>
+      
+    <p>
+      <a class="btn btn-primary btn-xs" style="display: inline" href="/<%= idea.id %>/details">
+        View details »
+      </a>
+    </p>
+
+    <div class="btn-group">
+
+      <button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown">
+        Tags<span class="caret"></span>
+      </button>
+
+      <ul class="dropdown-menu">
+
+        <% idea.tags.each do |idea_tag| %>
+          <li>
+            <a href="/tags/I win"><%= idea_tag %></a>
+          </li>
+        <% end %>
+        
+       </ul>
+
+    </div>
+
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,36 @@
+<% if param == 'default' %>
+
+  <%= erb :"idea/existing_ideas", locals: {ideas: ideas} %>
+
+<% else %>
+
+  <h3>Your Ideas Sorted by '<em><%= param%></em>':</h3><br>
+
+  <% if param == 'title' %>
+
+    <% filtered_ideas.each do |title, ideas| %>
+      
+      <% ideas.each do |idea| %>
+
+        <ul class="list-group">
+          <li class="list-group-item">
+
+            <%= title %>
+
+            <a style="float: right; display: inline" href="/<%= idea.id %>/details">
+              Idea Details »
+            </a>
+
+            <br>
+
+          </li>
+
+      <% end %>
+        
+        </ul>
+
+   
+    <% end %>
+  <% end %>
+<% end %>
+

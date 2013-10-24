@@ -1,0 +1,90 @@
+<h2>Statistics:</h2>
+<legend></legend>
+
+<% if stats.best_days.count == 1 %>
+  <h3>Best Day:</h3>
+<% else %>
+  <h3>Best Days:</h3>
+<% end %>
+ 
+<div class='well'>
+
+  <ul class="nav nav-pills">
+    <% stats.best_days.each do |day, ideas| %>
+      <%= erb :"statistics/day_badge", :locals => {day: day, idea_count: ideas.count} %>
+    <% end %>
+  </ul>
+
+</div>
+
+<% if stats.worst_days.count == 1 %>
+  <h3>Worst Day:</h3>
+<% else %>
+  <h3>Worst Days:</h3>
+<% end %>
+
+<div class='well'>
+
+  <ul class="nav nav-pills">
+    <% stats.worst_days.each do |day, ideas| %>
+      <%= erb :"statistics/day_badge", :locals => {day: day, idea_count: ideas.count} %>
+    <% end %>
+  </ul>
+
+</div>
+
+<h3>Idea Count by Day:</h3>
+
+  <div class='well'>
+
+    <ul class="nav nav-pills">
+
+      <%= erb :"statistics/day_badge", :locals => {day: 'All Days', idea_count: stats.idea_count} %>
+
+      <% stats.by_day.each do |day, ideas| %>
+        <%= erb :"statistics/day_badge", :locals => {day: day, idea_count: ideas.count} %>
+      <% end %>
+
+    </ul>
+
+  </div>
+
+<br>
+<legend></legend>
+
+<% if stats.best_six_hours.count == 1 %>
+  <h3>Most Productive Hour of the Day:</h3>
+<% else %>
+  <h3>Top <%= stats.best_six_hours.count %> Hours of the Day:</h3>
+<% end %>
+
+<div class='well'>
+
+  <ul class="nav nav-pills">
+    <% stats.best_six_hours.each do |hour, ideas| %>
+      <%= erb :"statistics/time_badge", :locals => {hour: hour, idea_count: ideas.count} %>
+    <% end %>
+  </ul>
+
+</div>
+
+
+<% if stats.worst_six_hours.count == 1 %>
+  <h3>Least Productive Hour of the Day:</h3>
+<% else %>
+  <h3>Worst '<%= stats.worst_six_hours.count %>' Hours of the Day:</h3>
+<% end %>
+
+<div class='well'>
+
+  <ul class="nav nav-pills">
+    <% stats.worst_six_hours.each do |hour, ideas| %>
+      <%= erb :"statistics/time_badge", :locals => {hour: hour, idea_count: ideas.count} %>
+    <% end %>
+  </ul>
+
+</div>
+
+<a href='statistics/times/all'><h3>Hourly Breakdown</h3></a>
+
+
